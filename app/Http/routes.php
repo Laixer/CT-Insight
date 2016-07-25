@@ -27,7 +27,7 @@ Route::get('/login', function () {
 	if (!$user_object)
 		abort(500);
 
-	Auth::login(User::createIfNotExist($user_object), true);
+	Auth::login(User::createIfNotExist($user_object));
 
 	return redirect('/');
 })->middleware('guest');

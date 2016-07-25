@@ -7,7 +7,7 @@
     "repositories": [
         {
             "type":"git",
-            "url":"/home/ct/authorizer"
+            "url":"https://github.com/Calculatietool/laravel-authorizer"
         }
     ],
     "require": {

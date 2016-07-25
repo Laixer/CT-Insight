@@ -34,8 +34,11 @@ class User extends Authenticatable
 
         $user = new self;
         $user->id = $user_object->id;
-        $user->name = $user_object->name;
+        $user->username = $user_object->username;
+        $user->firstname = $user_object->firstname;
+        $user->lastname = $user_object->lastname;
         $user->email = $user_object->email;
+        $user->isadmin = $user_object->isadmin;
 
         $user->save();
 
