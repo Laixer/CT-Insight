@@ -4,9 +4,17 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type":"git",
+            "url":"/home/ct/authorizer"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "socialiteproviders/manager": "~2.0",
+        "calculatietool/authorizer": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -11,6 +11,23 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
-    return view('welcome');
+	if (Auth::guest()) {
+		return Socialite::with('calculatietool')->redirect();
+	} else {
+		return view('welcome');
+	}
 });
+
+Route::get('/login', function () {
+	$user_object = Socialite::driver('calculatietool')->user();
+
+	if (!$user_object)
+		abort(500);
+
+	Auth::login(User::createIfNotExist($user_object), true);
+
+	return redirect('/');
+})->middleware('guest');

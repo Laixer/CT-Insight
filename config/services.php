@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'calculatietool' => [
+        'client_id' => env('CALCULATIETOOL_KEY'),
+        'client_secret' => env('CALCULATIETOOL_SECRET'),
+        'redirect' => env('CALCULATIETOOL_URI'),  
+    ]
+
 ];

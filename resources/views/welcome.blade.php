@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Hi {{ Auth::guest() ? "Shoot" : Auth::user()->name }} </div>
             </div>
         </div>
     </body>
