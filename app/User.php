@@ -20,7 +20,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'access_token', 'refresh_token'
+    ];
 
     /**
      * Create user from Socialite object if not exist.
@@ -39,6 +41,10 @@ class User extends Authenticatable
         $user->lastname = $user_object->lastname;
         $user->email = $user_object->email;
         $user->isadmin = $user_object->isadmin;
+
+        $user->access_token = $user_object->token;
+        $user->refresh_token = $user_object->refreshToken;
+        $user->access_token_expire = date("Y-m-d H:i:s", time() + $user_object->expiresIn);
 
         $user->save();
 

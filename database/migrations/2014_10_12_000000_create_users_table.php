@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->boolean('isadmin');
             $table->rememberToken();
+            $table->string('access_token', 40)->unique();
+            $table->string('refresh_token', 40)->unique();
+            $table->datetime('access_token_expire');
             $table->timestamps();
             $table->primary('id');
         });
