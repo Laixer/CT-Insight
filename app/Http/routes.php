@@ -13,14 +13,6 @@
 
 use App\User;
 
-Route::get('/', function () {
-	if (Auth::guest()) {
-		return Socialite::with('calculatietool')->redirect();
-	} else {
-		return view('welcome');
-	}
-});
-
 Route::get('/login', function () {
 	$user_object = Socialite::driver('calculatietool')->user();
 
@@ -38,9 +30,15 @@ Route::get('/login', function () {
 Route::get('/maint', function () {
 	$arr = [];
 
-	InternalMaintenance::request()->user(function ($user) use (&$arr) {
+	InternalMaintenance::request()->get('user', function ($user) use (&$arr) {
  		array_push($arr, $user);
  	});
 
 	return response()->json($arr);
+});
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/', function () {
+		return view('welcome');
+	});
 });
