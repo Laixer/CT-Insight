@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         SocialiteProviders\Manager\ServiceProvider::class,
+        CalculatieTool\IntMaint\IntMaintServiceProvider::class,
 
     ],
 
@@ -205,6 +206,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'InternalMaintenance' => CalculatieTool\IntMaint\Facades\InternalMaintenance::class,
     ],
 
 ];

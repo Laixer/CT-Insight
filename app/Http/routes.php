@@ -27,7 +27,20 @@ Route::get('/login', function () {
 	if (!$user_object)
 		abort(500);
 
+	if (!$user_object->issuperuser)
+		abort(401);
+
 	Auth::login(User::createIfNotExist($user_object));
 
 	return redirect('/');
 })->middleware('guest');
+
+Route::get('/maint', function () {
+	$arr = [];
+
+	InternalMaintenance::request()->user(function ($user) use (&$arr) {
+ 		array_push($arr, $user);
+ 	});
+
+	return response()->json($arr);
+});

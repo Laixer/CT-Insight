@@ -6,15 +6,20 @@
     "type": "project",
     "repositories": [
         {
-            "type":"git",
-            "url":"https://github.com/Calculatietool/laravel-authorizer"
+            "type": "git",
+            "url": "https://github.com/Calculatietool/laravel-authorizer"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/Calculatietool/laravel-internal-maintenance"
         }
     ],
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "socialiteproviders/manager": "~2.0",
-        "calculatietool/authorizer": "dev-master"
+        "calculatietool/authorizer": "dev-master",
+        "calculatietool/intmaint": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
