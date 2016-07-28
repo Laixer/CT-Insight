@@ -27,18 +27,16 @@ Route::get('/login', function () {
 	return redirect('/');
 })->middleware('guest');
 
-Route::get('/maint', function () {
-	$arr = [];
-
-	InternalMaintenance::request()->get('user', function ($user) use (&$arr) {
- 		array_push($arr, $user);
- 	});
-
-	return response()->json($arr);
-});
-
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/', function () {
 		return view('welcome');
+	});
+
+	Route::get('/blank', function () {
+		return view('blank');
+	});
+
+	Route::get('/board', function () {
+		return view('main');
 	});
 });
