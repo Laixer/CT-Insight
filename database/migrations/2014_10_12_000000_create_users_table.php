@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id')->unsigned();
             $table->string('username', 50)->unique();
             $table->string('firstname', 30);
             $table->string('lastname', 50)->nullable();
@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
         });
 
         Schema::create('remoteapp_users', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id')->unsigned();
             $table->string('username', 50)->unique();
             $table->char('gender', 1)->nullable();
             $table->string('firstname', 30);
@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
             $table->integer('mobile')->nullable()->unsigned();
             $table->integer('phone')->nullable()->unsigned();
             $table->string('email', 80)->unique();
-            $table->boolean('pref_use_ct_numbering')->default('Y');
+            $table->boolean('pref_use_ct_numbering');
             $table->decimal('pref_hourrate_calc', 6, 3)->nullable();
             $table->decimal('pref_hourrate_more', 6, 3)->nullable();
             $table->tinyInteger('pref_profit_calc_contr_mat')->unsigned();
@@ -59,7 +59,7 @@ class CreateUsersTable extends Migration
         });
 
         Schema::create('remoteapp_projects', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id')->unsigned();
             $table->string('project_name', 50);
             $table->string('address_street', 60);
             $table->string('address_number', 5);
