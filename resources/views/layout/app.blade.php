@@ -255,15 +255,9 @@
                 <span class="username">Hi, {{ Auth::user()->username }}</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- <li>
-                    <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
-                  </li>
                   <li>
-                    <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
+                    <a href="/logout"><i class="icon-login"></i><span>Application</span></a>
                   </li>
-                  <li>
-                    <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
-                  </li> -->
                   <li>
                     <a href="/logout"><i class="icon-logout"></i><span>Logout</span></a>
                   </li>
