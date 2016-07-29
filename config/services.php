@@ -38,7 +38,8 @@ return [
     'calculatietool' => [
         'client_id' => env('CALCULATIETOOL_KEY'),
         'client_secret' => env('CALCULATIETOOL_SECRET'),
-        'redirect' => env('CALCULATIETOOL_URI'),  
+        'redirect' => env('CALCULATIETOOL_URI'),
+        'endpoint' => env('CALCULATIETOOL_ENDPOINT'),
     ]
 
 ];
