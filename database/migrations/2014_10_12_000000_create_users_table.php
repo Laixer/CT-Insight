@@ -27,6 +27,13 @@ class CreateUsersTable extends Migration
             $table->primary('id');
         });
 
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->integer('type')->unique();
+            $table->string('message', 30);
+            $table->timestamps();
+        });
+
         Schema::create('remoteapp_users', function (Blueprint $table) {
             $table->integer('id')->unsigned();
             $table->string('username', 50)->unique();
@@ -103,8 +110,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
-        Schema::drop('remoteapp_users');
         Schema::drop('remoteapp_projects');
+        Schema::drop('remoteapp_users');
+        Schema::drop('notifications');
+        Schema::drop('users');
     }
 }

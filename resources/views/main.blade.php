@@ -1,10 +1,10 @@
-@extends('layout.app')
+<?php $section = 'board'; ?>
 
-@section('title', 'Page Title')
+@extends('layout.app')
 
 @section('content')
   <div class="row">
-    <div class="col-xlg-7 col-lg-7">
+<!--     <div class="col-xlg-7 col-lg-7">
       <div class="row">
         <div class="col-md-12">
           <div class="panel bg-dark widget-map">
@@ -24,13 +24,96 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+    <div class="col-xlg-6">
+      <div class="panel">
+        <div class="panel-content widget-full widget-stock stock2">
+          <div class="tab_right">
+            <ul class="nav nav-tabs">
+              <li class="lines-3">
+                <a href="#yahoo-tab" id="yahoo" data-toggle="tab" data-color="green" data-value="+6.214%">
+                  <div class="clearfix">
+                    <span class="title pull-left">YHOO</span>
+                    <span class="pull-right">Yahoo Inc</span>
+                  </div>
+                  <div class="clearfix">
+                    <span class="c-gray pull-left"><strong>23.32</strong></span>
+                    <span class="c-green pull-right">+6.214%</span>
+                  </div>
+                </a>
+              </li>
+              <li class="lines-3 active">
+                <a href="#google-tab" id="google" data-toggle="tab" data-color="red" data-value="-8.425%">
+                  <div class="clearfix">
+                    <span class="title pull-left">GOOG</span>
+                    <span class="pull-right">Google Inc</span>
+                  </div>
+                  <div class="clearfix">
+                    <span class="c-gray pull-left"><strong>22.32</strong></span>
+                    <span class="c-red pull-right">-8.425%</span>
+                  </div>
+                </a>
+              </li>
+              <li class="lines-3">
+                <a href="#nokia-tab"  id="nokia" data-toggle="tab" data-color="green" data-value="+2.035%">
+                  <div class="clearfix">
+                    <span class="title pull-left">NOK</span>
+                    <span class="pull-right">Nokia Inc</span>
+                  </div>
+                  <div class="clearfix">
+                    <span class="c-gray pull-left"><strong>25.32</strong></span>
+                    <span class="c-green pull-right">+2.035%</span>
+                  </div>
+                </a>
+              </li>
+              <li class="lines-3">
+                <a href="#htc-tab"  id="htc" data-toggle="tab" data-color="red" data-value="-1.052%">
+                  <div class="clearfix">
+                    <span class="title pull-left">HTC</span>
+                    <span class="pull-right">HTC Inc</span>
+                  </div>
+                  <div class="clearfix">
+                    <span class="c-gray pull-left"><strong>18.96</strong></span>
+                    <span class="c-red pull-right">-1.052%</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="title-stock">
+                <h1>Google Inc</h1>
+                <span class="c-red">-8.425%</span>
+              </div>
+              <div class="tab-pane" id="yahoo-tab" style="display:none">
+                <div id="stock-yahoo"></div>
+                <div class="company-info">Yahoo! Inc. is an American multinational Internet corporation headquartered in Sunnyvale, California. It is globally known for its Web portal, search engine Yahoo Search, and related services.</div>
+              </div>
+              <div class="tab-pane active" id="google-tab">
+                <div id="stock-google"></div>
+                <div class="company-info">Google is a United States-headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software.</div>
+              </div>
+              <div class="tab-pane" id="nokia-tab" style="display:none">
+                <div id="stock-nokia"></div>
+                <div class="company-info">Nokia is a Finnish multinational communications and information technology company. Nokia employed 90,000 people across 120 countries, conducts sales in more than 150 countries and reported annual revenues of around €12.7 billion.</div>
+              </div>
+              <div class="tab-pane" id="htc-tab" style="display:none">
+                <div id="stock-htc"></div>
+                <div class="company-info">HTC Corporation is a Taiwanese manufacturer of smartphones and tablets. Founded in 1997, HTC began designing and manufacturing devices such as mobile phones, touchscreen phones, and PDAs based on Windows Mobile OS.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
     <div class="col-xlg-3 col-lg-5 col-visitors">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
             <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Visitors</strong> Statistic</h3>
+              <h3><i class="icon-graph"></i> <strong>Application</strong> Statistics</h3>
               <div class="control-btn">
                 <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
               </div>
@@ -43,12 +126,12 @@
                 <div class="col-xs-9">
                   <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
                     <div>
-                      <small class="stat-title">Visits today</small>
-                      <h1 class="f-40 m-0 w-300">25 610</h1>
+                      <small class="stat-title">Total users</small>
+                      <h1 class="f-40 m-0 w-300">{{ $total_users }}</h1>
                     </div>
                     <div>
-                      <small class="stat-title">Visits yesterday</small>
-                      <h1 class="f-40 m-0 w-300">22 420</h1>
+                      <small class="stat-title">Total projects</small>
+                      <h1 class="f-40 m-0 w-300">{{ $total_projects }}</h1>
                     </div>
                   </div>
                 </div>
@@ -78,9 +161,9 @@
                 </div>
               </div>
             </div>
-            <div class="panel-stat-chart">
+            <!-- <div class="panel-stat-chart">
               <canvas id="visitors-chart"></canvas>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -134,7 +217,7 @@
       </div>
     </div>
     <div class="col-xlg-2 hidden-lg col-clock">
-      <div class="row">
+      <!--<div class="row">
         <div class="col-md-12">
           <ul class="jquery-clock small" data-jquery-clock="">
             <li class="jquery-clock-pin"></li>
@@ -143,7 +226,7 @@
             <li class="jquery-clock-hour"></li>
           </ul>
         </div>
-      </div>
+      </div>-->
       <div class="row">
         <div class="col-md-12">
           <div class="widget-progress-bar">
@@ -282,86 +365,6 @@
         </div>
       </div>
     </div>
-    <div class="col-xlg-6">
-      <div class="panel">
-        <div class="panel-content widget-full widget-stock stock2">
-          <div class="tab_right">
-            <ul class="nav nav-tabs">
-              <li class="lines-3">
-                <a href="#yahoo-tab" id="yahoo" data-toggle="tab" data-color="green" data-value="+6.214%">
-                  <div class="clearfix">
-                    <span class="title pull-left">YHOO</span>
-                    <span class="pull-right">Yahoo Inc</span>
-                  </div>
-                  <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>23.32</strong></span>
-                    <span class="c-green pull-right">+6.214%</span>
-                  </div>
-                </a>
-              </li>
-              <li class="lines-3 active">
-                <a href="#google-tab" id="google" data-toggle="tab" data-color="red" data-value="-8.425%">
-                  <div class="clearfix">
-                    <span class="title pull-left">GOOG</span>
-                    <span class="pull-right">Google Inc</span>
-                  </div>
-                  <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>22.32</strong></span>
-                    <span class="c-red pull-right">-8.425%</span>
-                  </div>
-                </a>
-              </li>
-              <li class="lines-3">
-                <a href="#nokia-tab"  id="nokia" data-toggle="tab" data-color="green" data-value="+2.035%">
-                  <div class="clearfix">
-                    <span class="title pull-left">NOK</span>
-                    <span class="pull-right">Nokia Inc</span>
-                  </div>
-                  <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>25.32</strong></span>
-                    <span class="c-green pull-right">+2.035%</span>
-                  </div>
-                </a>
-              </li>
-              <li class="lines-3">
-                <a href="#htc-tab"  id="htc" data-toggle="tab" data-color="red" data-value="-1.052%">
-                  <div class="clearfix">
-                    <span class="title pull-left">HTC</span>
-                    <span class="pull-right">HTC Inc</span>
-                  </div>
-                  <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>18.96</strong></span>
-                    <span class="c-red pull-right">-1.052%</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="title-stock">
-                <h1>Google Inc</h1>
-                <span class="c-red">-8.425%</span>
-              </div>
-              <div class="tab-pane" id="yahoo-tab" style="display:none">
-                <div id="stock-yahoo"></div>
-                <div class="company-info">Yahoo! Inc. is an American multinational Internet corporation headquartered in Sunnyvale, California. It is globally known for its Web portal, search engine Yahoo Search, and related services.</div>
-              </div>
-              <div class="tab-pane active" id="google-tab">
-                <div id="stock-google"></div>
-                <div class="company-info">Google is a United States-headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software.</div>
-              </div>
-              <div class="tab-pane" id="nokia-tab" style="display:none">
-                <div id="stock-nokia"></div>
-                <div class="company-info">Nokia is a Finnish multinational communications and information technology company. Nokia employed 90,000 people across 120 countries, conducts sales in more than 150 countries and reported annual revenues of around €12.7 billion.</div>
-              </div>
-              <div class="tab-pane" id="htc-tab" style="display:none">
-                <div id="stock-htc"></div>
-                <div class="company-info">HTC Corporation is a Taiwanese manufacturer of smartphones and tablets. Founded in 1997, HTC began designing and manufacturing devices such as mobile phones, touchscreen phones, and PDAs based on Windows Mobile OS.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <div class="row">
     <div class="col-md-4 col-sm-6 portlets">
@@ -460,31 +463,9 @@
       </div>
     </div>
     <div class="col-md-4 col-sm-6 portlets">
-      <div class="panel widget-weather"></div>
-      <div class="panel widget-member clearfix">
-        <div class="col-xs-3">
-          <img src="/assets/images/avatars/user2.png" alt="avatar 12" class="pull-left img-responsive">
-        </div>
-        <div class="col-xs-9">
-          <h3 class="m-t-0 member-name"><strong>John Snow</strong></h3>
-          <p class="member-job">Software Engineer</p>
-          <div class="row">
-            <div class="col-xlg-6">
-              <p><i class="icon-envelope c-gray-light p-r-10"></i> cameso@it.com</p>
-              <p><i class="fa fa-facebook c-gray-light p-r-10"></i> fb.com/jsnow</p>
-            </div>
-            <div class="col-xlg-6 align-right">
-              <p><i class="icon-calendar c-gray-light p-r-10"></i> 6 may 2014</p>
-              <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 portlets">
-      <div class="widget widget_calendar bg-dark">
+      <!-- <div class="widget widget_calendar bg-dark">
         <div class="multidatepicker"></div>
-      </div>
+      </div> -->
       <div class="panel m-t-0">
         <div class="panel-header panel-controls">
           <h3><i class="icon-basket"></i> <strong>Sales</strong> Volume Stats</h3>
@@ -498,12 +479,12 @@
   <div class="footer">
     <div class="copyright">
       <p class="pull-left sm-pull-reset">
-        <span>Copyright <span class="copyright">©</span> 2015 </span>
-        <span>THEMES LAB</span>.
+        <span>Copyright <span class="copyright">©</span> {{ date('Y') }} </span>
+        <span>CalculatieTool.com</span>.
         <span>All rights reserved. </span>
       </p>
       <p class="pull-right sm-pull-reset">
-        <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
+        <span><a href="https://app.calculatietool.com/support" class="m-r-10">Support</a> | <a href="https://app.calculatietool.com/terms-and-conditions" class="m-l-10 m-r-10">Terms of use</a> | <a href="https://app.calculatietool.com/privacy-policy" class="m-l-10">Privacy Policy</a></span>
       </p>
     </div>
   </div>

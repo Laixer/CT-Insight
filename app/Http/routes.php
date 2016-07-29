@@ -12,6 +12,8 @@
 */
 
 use App\User;
+use App\RemoteappUser;
+use App\RemoteappProject;
 
 Route::get('/login', function () {
 	$user_object = Socialite::driver('calculatietool')->user();
@@ -27,6 +29,10 @@ Route::get('/login', function () {
 	return redirect('/');
 })->middleware('guest');
 
+Route::get('/reauth', function () {
+	return view('reauth');
+})->middleware('guest');
+
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/', function () {
 		return view('welcome');
@@ -37,6 +43,22 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 
 	Route::get('/board', function () {
-		return view('main');
+		return view('main', [
+			'total_users' => RemoteappUser::count(),
+			'total_projects' => RemoteappProject::count(),
+		]);
+	});
+
+	Route::get('/table', function () {
+		return view('table', [
+			'all_users' => RemoteappUser::all(),
+			// 'total_projects' => RemoteappProject::count(),
+		]);
+	});
+
+	Route::get('/logout', function () {
+		Auth::logout();
+
+		return redirect('/reauth');
 	});
 });

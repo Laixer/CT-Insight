@@ -6,7 +6,7 @@
     <meta name="description" content="admin-themes-lab">
     <meta name="author" content="themes-lab">
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
-    <title>Make Admin Template &amp; Builder</title>
+    <title>CTinsight</title>
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/css/theme.css" rel="stylesheet">
     <link href="/assets/css/ui.css" rel="stylesheet">
@@ -14,48 +14,23 @@
     <!-- BEGIN PAGE STYLE -->
     <link href="/assets/plugins/metrojs/metrojs.min.css" rel="stylesheet">
     <link href="/assets/plugins/maps-amcharts/ammap/ammap.min.css" rel="stylesheet">
+    <link href="/assets/plugins/datatables/dataTables.min.css" rel="stylesheet">
     <!-- END PAGE STYLE -->
     <script src="/assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
-  <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
-  <!-- LAYOUT: Apply "sidebar-collapsed" class to body element to have collapsed sidebar -->
-  <!-- LAYOUT: Apply "sidebar-top" class to body element to have sidebar on top of the page -->
-  <!-- LAYOUT: Apply "sidebar-hover" class to body element to show sidebar only when your mouse is on left / right corner -->
-  <!-- LAYOUT: Apply "submenu-hover" class to body element to show sidebar submenu on mouse hover -->
-  <!-- LAYOUT: Apply "fixed-sidebar" class to body to have fixed sidebar -->
-  <!-- LAYOUT: Apply "fixed-topbar" class to body to have fixed topbar -->
-  <!-- LAYOUT: Apply "rtl" class to body to put the sidebar on the right side -->
-  <!-- LAYOUT: Apply "boxed" class to body to have your page with 1200px max width -->
-
-  <!-- THEME STYLE: Apply "theme-sdtl" for Sidebar Dark / Topbar Light -->
-  <!-- THEME STYLE: Apply  "theme sdtd" for Sidebar Dark / Topbar Dark -->
-  <!-- THEME STYLE: Apply "theme sltd" for Sidebar Light / Topbar Dark -->
-  <!-- THEME STYLE: Apply "theme sltl" for Sidebar Light / Topbar Light -->
-  
-  <!-- THEME COLOR: Apply "color-default" for dark color: #2B2E33 -->
-  <!-- THEME COLOR: Apply "color-primary" for primary color: #319DB5 -->
-  <!-- THEME COLOR: Apply "color-red" for red color: #C9625F -->
-  <!-- THEME COLOR: Apply "color-green" for green color: #18A689 -->
-  <!-- THEME COLOR: Apply "color-orange" for orange color: #B66D39 -->
-  <!-- THEME COLOR: Apply "color-purple" for purple color: #6E62B5 -->
-  <!-- THEME COLOR: Apply "color-blue" for blue color: #4A89DC -->
   <!-- BEGIN BODY -->
-  <body class="sidebar-top fixed-topbar fixed-sidebar theme-sdtl color-default">
+  <body class="sidebar-top fixed-topbar fixed-sidebar theme-sdtl color-purple">
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <section>
       <!-- BEGIN SIDEBAR -->
       <div class="sidebar">
-        <div class="logopanel">
-          <h1>
-            <a href="dashboard.html"></a>
-          </h1>
-        </div>
         <div class="sidebar-inner">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="dashboard.html"><i class="icon-home"></i><span>Dashboard</span></a></li>
-            <li class="nav-parent">
+            <li {!! $section == 'board' ? 'class="active"' : '' !!}><a href="/board"><i class="icon-home"></i><span>Dashboard</span></a></li>
+            <li {!! $section == 'table' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-table"></i><span>Users</span></a></li>
+            <!--<li class="nav-parent">
               <a href="#"><i class="icon-puzzle"></i><span>Builder</span> <span class="fa arrow"></span></a>
               <ul class="children collapse">
                 <li><a target="_blank" href="../../admin-builder/index.html"> Admin</a></li>
@@ -107,15 +82,6 @@
                 <li><a href="forms-sliders.html"> Sliders</a></li>
                 <li><a href="forms-editors.html"> Text Editors</a></li>
                 <li><a href="forms-input-masks.html"> Input Masks</a></li>
-              </ul>
-            </li>
-            <li class="nav-parent">
-              <a href=""><i class="fa fa-table"></i><span>Tables</span><span class="fa arrow"></span></a>
-              <ul class="children collapse">
-                <li><a href="tables.html"> Tables Styling</a></li>
-                <li><a href="tables-dynamic.html"> Tables Dynamic</a></li>
-                <li><a href="tables-filter.html"> Tables Filter</a></li>
-                <li><a href="tables-editable.html"> Tables Editable</a></li>
               </ul>
             </li>
             <li class="nav-parent">
@@ -172,7 +138,7 @@
                 <li><a href="maps-vector.html"> Vector Maps</a></li>
                 <li><a href="extra-translation.html"> Translation</a></li>
               </ul>
-            </li>
+            </li>-->
           </ul>
           <div class="sidebar-footer clearfix">
             <a class="pull-left footer-settings" href="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
@@ -194,10 +160,10 @@
             <div class="topnav">
               <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
               <ul class="nav nav-icons">
-                <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li>
-                <li><a href="mailbox.html"><span class="octicon octicon-mail-read"></span></a></li>
-                <li><a href="#"><span class="octicon octicon-flame"></span></a></li>
-                <li><a href="builder-page.html"><span class="octicon octicon-rocket"></span></a></li>
+                <!-- <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li> -->
+                <li><a href="https://app.calculatietool.com/login"><span class="octicon octicon-device-desktop"></span></a></li>
+                <!-- <li><a href="#"><span class="octicon octicon-flame"></span></a></li> -->
+                <!-- <li><a href="builder-page.html"><span class="octicon octicon-rocket"></span></a></li> -->
               </ul>
             </div>
           </div>
@@ -282,97 +248,14 @@
                 </ul>
               </li>
               <!-- END NOTIFICATION DROPDOWN -->
-              <!-- BEGIN MESSAGES DROPDOWN -->
-              <li class="dropdown" id="messages-header">
-                <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                <i class="icon-paper-plane"></i>
-                <span class="badge badge-primary badge-header">
-                8
-                </span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header clearfix">
-                    <p class="pull-left">
-                      You have 8 Messages
-                    </p>
-                  </li>
-                  <li class="dropdown-body">
-                    <ul class="dropdown-menu-list withScroll" data-height="220">
-                      <li class="clearfix">
-                        <span class="pull-left p-r-5">
-                        <img src="/assets/images/avatars/avatar3.png" alt="avatar 3">
-                        </span>
-                        <div class="clearfix">
-                          <div>
-                            <strong>Alexa Johnson</strong> 
-                            <small class="pull-right text-muted">
-                            <span class="glyphicon glyphicon-time p-r-5"></span>12 mins ago
-                            </small>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                        </div>
-                      </li>
-                      <li class="clearfix">
-                        <span class="pull-left p-r-5">
-                        <img src="/assets/images/avatars/avatar4.png" alt="avatar 4">
-                        </span>
-                        <div class="clearfix">
-                          <div>
-                            <strong>John Smith</strong> 
-                            <small class="pull-right text-muted">
-                            <span class="glyphicon glyphicon-time p-r-5"></span>47 mins ago
-                            </small>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                        </div>
-                      </li>
-                      <li class="clearfix">
-                        <span class="pull-left p-r-5">
-                        <img src="/assets/images/avatars/avatar5.png" alt="avatar 5">
-                        </span>
-                        <div class="clearfix">
-                          <div>
-                            <strong>Bobby Brown</strong>  
-                            <small class="pull-right text-muted">
-                            <span class="glyphicon glyphicon-time p-r-5"></span>1 hour ago
-                            </small>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                        </div>
-                      </li>
-                      <li class="clearfix">
-                        <span class="pull-left p-r-5">
-                        <img src="/assets/images/avatars/avatar6.png" alt="avatar 6">
-                        </span>
-                        <div class="clearfix">
-                          <div>
-                            <strong>James Miller</strong> 
-                            <small class="pull-right text-muted">
-                            <span class="glyphicon glyphicon-time p-r-5"></span>2 days ago
-                            </small>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-footer clearfix">
-                    <a href="mailbox.html" class="pull-left">See all messages</a>
-                    <a href="#" class="pull-right">
-                    <i class="icon-settings"></i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <!-- END MESSAGES DROPDOWN -->
               <!-- BEGIN USER DROPDOWN -->
               <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                <img src="/assets/images/avatars/user1.png" alt="user image">
-                <span class="username">Hi, John Doe</span>
+                <!-- <img src="/assets/images/avatars/user1.png" alt="user image"> -->
+                <span class="username">Hi, {{ Auth::user()->username }}</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
+                  <!-- <li>
                     <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
                   </li>
                   <li>
@@ -380,9 +263,9 @@
                   </li>
                   <li>
                     <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
-                  </li>
+                  </li> -->
                   <li>
-                    <a href="#"><i class="icon-logout"></i><span>Logout</span></a>
+                    <a href="/logout"><i class="icon-logout"></i><span>Logout</span></a>
                   </li>
                 </ul>
               </li>
@@ -400,99 +283,6 @@
       </div>
       <!-- END MAIN CONTENT -->
     </section>
-    <!-- BEGIN SEARCH -->
-    <div id="morphsearch" class="morphsearch">
-      <form class="morphsearch-form">
-        <input class="morphsearch-input" type="search" placeholder="Search..."/>
-        <button class="morphsearch-submit" type="submit">Search</button>
-      </form>
-      <div class="morphsearch-content withScroll">
-        <div class="dummy-column user-column">
-          <h2>Users</h2>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/avatars/avatar1_big.png" alt="Avatar 1"/>
-            <h3>John Smith</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/avatars/avatar2_big.png" alt="Avatar 2"/>
-            <h3>Bod Dylan</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/avatars/avatar3_big.png" alt="Avatar 3"/>
-            <h3>Jenny Finlan</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/images/avatars/avatar4_big.png" alt="Avatar 4"/>
-            <h3>Harold Fox</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/avatars/avatar5_big.png" alt="Avatar 5"/>
-            <h3>Martin Hendrix</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/avatars/avatar6_big.png" alt="Avatar 6"/>
-            <h3>Paul Ferguson</h3>
-          </a>
-        </div>
-        <div class="dummy-column">
-          <h2>Articles</h2>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/1.jpg" alt="1"/>
-            <h3>How to change webdesign?</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/2.jpg" alt="2"/>
-            <h3>News From the sky</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/3.jpg" alt="3"/>
-            <h3>Where is the cat?</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/4.jpg" alt="4"/>
-            <h3>Just another funny story</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/5.jpg" alt="5"/>
-            <h3>How many water we drink every day?</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/6.jpg" alt="6"/>
-            <h3>Drag and drop tutorials</h3>
-          </a>
-        </div>
-        <div class="dummy-column">
-          <h2>Recent</h2>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/7.jpg" alt="7"/>
-            <h3>Design Inspiration</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/8.jpg" alt="8"/>
-            <h3>Animals drawing</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/9.jpg" alt="9"/>
-            <h3>Cup of tea please</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/10.jpg" alt="10"/>
-            <h3>New application arrive</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/11.jpg" alt="11"/>
-            <h3>Notification prettify</h3>
-          </a>
-          <a class="dummy-media-object" href="#">
-            <img src="/assets/images/gallery/12.jpg" alt="12"/>
-            <h3>My article is the last recent</h3>
-          </a>
-        </div>
-      </div>
-      <!-- /morphsearch-content -->
-      <span class="morphsearch-close"></span>
-    </div>
-    <!-- END QUICKVIEW SIDEBAR -->
     <!-- BEGIN PRELOADER -->
     <div class="loader-overlay">
       <div class="spinner">
@@ -514,18 +304,18 @@
     <script src="/assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
     <script src="/assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
     <script src="/assets/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
-    <script src="/assets/plugins/retina/retina.min.js"></script> <!-- Retina Display -->
-    <script src="/assets/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+    <!-- <script src="/assets/plugins/retina/retina.min.js"></script> <!-- Retina Display --> -->
+    <!-- <script src="/assets/plugins/select2/select2.min.js"></script> <!-- Select Inputs --> -->
     <script src="/assets/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
-    <script src="/assets/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+    <!-- <script src="/assets/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image --> -->
     <script src="/assets/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
     <script src="/assets/plugins/charts-chartjs/Chart.min.js"></script>
 
-    <script src="/assets/js/builder.js"></script> <!-- Theme Builder -->
-    <script src="/assets/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
-    <script src="/assets/js/widgets/notes.js"></script> <!-- Notes Widget -->
-    <script src="/assets/js/quickview.js"></script> <!-- Chat Script -->
-    <script src="/assets/js/pages/search.js"></script> <!-- Search Script -->
+    <!-- <script src="/assets/js/builder.js"></script> <!-- Theme Builder --> -->
+    <!-- <script src="/assets/js/sidebar_hover.js"></script> <!-- Sidebar on Hover --> -->
+    <!-- <script src="/assets/js/widgets/notes.js"></script> <!-- Notes Widget --> -->
+    <!-- <script src="/assets/js/quickview.js"></script> <!-- Chat Script --> -->
+    <!-- <script src="/assets/js/pages/search.js"></script> <!-- Search Script --> -->
     <script src="/assets/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
     <script src="/assets/js/application.js"></script> <!-- Main Application Script -->
     <script src="/assets/js/layout.js"></script> <!-- Main Application Script -->
@@ -541,11 +331,16 @@
     <script src="/assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- financial Charts -->
     <script src="/assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts Export Tool -->
     <script src="/assets/plugins/maps-amcharts/ammap/ammap.min.js"></script> <!-- Vector Map -->
-    <script src="/assets/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script> <!-- Vector World Map  -->
-    <script src="/assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script> <!-- Vector Map Black Theme -->
-    <script src="/assets/plugins/skycons/skycons.min.js"></script> <!-- Animated Weather Icons -->
-    <script src="/assets/plugins/simple-weather/jquery.simpleWeather.js"></script> <!-- Weather Plugin -->
-    <script src="/assets/js/widgets/widget_weather.js"></script>
+    <!-- <script src="/assets/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script> <!-- Vector World Map  --> -->
+    <!-- <script src="/assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script> <!-- Vector Map Black Theme --> -->
+    <!-- <script src="/assets/plugins/skycons/skycons.min.js"></script> <!-- Animated Weather Icons --> -->
+    <!-- <script src="/assets/plugins/simple-weather/jquery.simpleWeather.js"></script> <!-- Weather Plugin --> -->
+    <!-- <script src="/assets/js/widgets/widget_weather.js"></script> -->
     <script src="/assets/js/pages/dashboard.js"></script>
+    <!-- END PAGE SCRIPTS -->
+    <!-- BEGIN PAGE SCRIPTS -->
+    <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
+    <script src="/assets/js/pages/table_dynamic.js"></script>
+    <!-- END PAGE SCRIPTS -->
   </body>
 </html>
