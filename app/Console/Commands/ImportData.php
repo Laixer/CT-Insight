@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Stats;
 use App\RemoteappUser;
 use App\RemoteappProject;
 use Illuminate\Console\Command;
@@ -29,10 +30,14 @@ class ImportData extends Command
      */
     public function handle()
     {
-        \InternalMaintenance::request()->get('user', function ($user) {
+        $statistics = new Stats;
+
+        \InternalMaintenance::request()->get('user', function ($user) use ($statistics) {
             $remoteapp_user = RemoteappUser::find($user['id']);
             if (!$remoteapp_user)
                 $remoteapp_user = new RemoteappUser;
+
+            $statistics->user_count++;
 
             $remoteapp_user->id = $user['id'];
             $remoteapp_user->gender = $user['gender'];
@@ -64,10 +69,12 @@ class ImportData extends Command
             $remoteapp_user->save();
         });
 
-        \InternalMaintenance::request()->get('project', function ($project) {
+        \InternalMaintenance::request()->get('project', function ($project) use ($statistics) {
             $remoteapp_project = RemoteappProject::find($project['id']);
             if (!$remoteapp_project)
                 $remoteapp_project = new RemoteappProject;
+
+            $statistics->project_count++;
 
             $remoteapp_project->id = $project['id'];
             $remoteapp_project->project_name = $project['project_name'];
@@ -102,5 +109,11 @@ class ImportData extends Command
             $remoteapp_project->user_id = $project['user_id'];
             $remoteapp_project->save();
         });
+
+        $statistics->chapter_count = 0;
+        $statistics->activity_count = 0;
+        $statistics->offer_count = 0;
+        $statistics->invoice_count = 0;
+        $statistics->save();
     }
 }

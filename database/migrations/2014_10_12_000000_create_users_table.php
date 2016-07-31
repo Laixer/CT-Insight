@@ -101,6 +101,17 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->primary('id');
         });
+
+        Schema::create('stat_counter', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->integer('user_count')->unsigned();
+            $table->integer('project_count')->unsigned();
+            $table->integer('chapter_count')->unsigned();
+            $table->integer('activity_count')->unsigned();
+            $table->integer('offer_count')->unsigned();
+            $table->integer('invoice_count')->unsigned();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -110,6 +121,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::drop('stat_counter');
         Schema::drop('remoteapp_projects');
         Schema::drop('remoteapp_users');
         Schema::drop('notifications');

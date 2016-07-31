@@ -29,7 +29,8 @@
         <div class="sidebar-inner">
           <ul class="nav nav-sidebar">
             <li {!! $section == 'board' ? 'class="active"' : '' !!}><a href="/board"><i class="icon-home"></i><span>Dashboard</span></a></li>
-            <li {!! $section == 'table' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-table"></i><span>Users</span></a></li>
+            <li {!! $section == 'users' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-table"></i><span>Users</span></a></li>
+            <li {!! $section == 'projects' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-table"></i><span>Projects</span></a></li>
             <!--<li class="nav-parent">
               <a href="#"><i class="icon-puzzle"></i><span>Builder</span> <span class="fa arrow"></span></a>
               <ul class="children collapse">
@@ -305,7 +306,6 @@
     <script src="/assets/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
     <script src="/assets/plugins/charts-chartjs/Chart.min.js"></script>
 
-    <!-- <script src="/assets/js/builder.js"></script> <!-- Theme Builder --> -->
     <!-- <script src="/assets/js/sidebar_hover.js"></script> <!-- Sidebar on Hover --> -->
     <!-- <script src="/assets/js/widgets/notes.js"></script> <!-- Notes Widget --> -->
     <!-- <script src="/assets/js/quickview.js"></script> <!-- Chat Script --> -->

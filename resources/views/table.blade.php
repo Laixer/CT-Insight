@@ -7,11 +7,10 @@
     <h2>Application <strong>users</strong></h2>
     <div class="breadcrumb-wrapper">
       <ol class="breadcrumb">
-        <li><a href="dashboard.html">Make</a>
+        <li>
+          <a href="/board">Home</a>
         </li>
-        <li><a href="tables.html">Tables</a>
-        </li>
-        <li class="active">Tables Dynamic</li>
+        <li class="active">Users</li>
       </ol>
     </div>
   </div>
