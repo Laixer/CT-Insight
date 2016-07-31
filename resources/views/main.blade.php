@@ -31,11 +31,11 @@
         <div class="panel-content widget-full widget-stock stock2">
           <div class="tab_right">
             <ul class="nav nav-tabs">
-              <li class="lines-3">
+              <li class="lines-3 active">
                 <a href="#yahoo-tab" id="yahoo" data-toggle="tab" data-color="green" data-value="+6.214%">
                   <div class="clearfix">
-                    <span class="title pull-left">YHOO</span>
-                    <span class="pull-right">Yahoo Inc</span>
+                    <!-- <span class="title pull-left">YHOO</span> -->
+                    <span class="pull-right">Users</span>
                   </div>
                   <div class="clearfix">
                     <span class="c-gray pull-left"><strong>23.32</strong></span>
@@ -43,11 +43,11 @@
                   </div>
                 </a>
               </li>
-              <li class="lines-3 active">
+              <li class="lines-3">
                 <a href="#google-tab" id="google" data-toggle="tab" data-color="red" data-value="-8.425%">
                   <div class="clearfix">
-                    <span class="title pull-left">GOOG</span>
-                    <span class="pull-right">Google Inc</span>
+                    <!-- <span class="title pull-left">GOOG</span> -->
+                    <span class="pull-right">Projects</span>
                   </div>
                   <div class="clearfix">
                     <span class="c-gray pull-left"><strong>22.32</strong></span>
@@ -58,8 +58,8 @@
               <li class="lines-3">
                 <a href="#nokia-tab"  id="nokia" data-toggle="tab" data-color="green" data-value="+2.035%">
                   <div class="clearfix">
-                    <span class="title pull-left">NOK</span>
-                    <span class="pull-right">Nokia Inc</span>
+                    <!-- <span class="title pull-left">NOK</span> -->
+                    <span class="pull-right">Offers</span>
                   </div>
                   <div class="clearfix">
                     <span class="c-gray pull-left"><strong>25.32</strong></span>
@@ -70,8 +70,8 @@
               <li class="lines-3">
                 <a href="#htc-tab"  id="htc" data-toggle="tab" data-color="red" data-value="-1.052%">
                   <div class="clearfix">
-                    <span class="title pull-left">HTC</span>
-                    <span class="pull-right">HTC Inc</span>
+                    <!-- <span class="title pull-left">HTC</span> -->
+                    <span class="pull-right">Invoices</span>
                   </div>
                   <div class="clearfix">
                     <span class="c-gray pull-left"><strong>18.96</strong></span>
@@ -82,7 +82,7 @@
             </ul>
             <div class="tab-content">
               <div class="title-stock">
-                <h1>Google Inc</h1>
+                <h1>Historical user progression</h1>
                 <span class="c-red">-8.425%</span>
               </div>
               <div class="tab-pane" id="yahoo-tab" style="display:none">
@@ -211,7 +211,11 @@
                     <td>{{ $user->firstname }}</td>
                     <td><span class="c-primary">{{ $user->username }}</span></td>
                     <td>
+                      @if ($user->confirmed_mail)
                       <div class="badge badge-success">Active</div>
+                      @else
+                      <div class="badge badge-warning">Pending</div>
+                      @endif
                     </td>
                   </tr>
                   @endforeach
