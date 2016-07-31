@@ -29,8 +29,8 @@
         <div class="sidebar-inner">
           <ul class="nav nav-sidebar">
             <li {!! $section == 'board' ? 'class="active"' : '' !!}><a href="/board"><i class="icon-home"></i><span>Dashboard</span></a></li>
-            <li {!! $section == 'users' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-table"></i><span>Users</span></a></li>
-            <li {!! $section == 'projects' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-table"></i><span>Projects</span></a></li>
+            <li {!! $section == 'users' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-users"></i><span>Users</span></a></li>
+            <li {!! $section == 'projects' ? 'class="active"' : '' !!}><a href="/table"><i class="fa fa-file-text-o"></i><span>Projects</span></a></li>
             <!--<li class="nav-parent">
               <a href="#"><i class="icon-puzzle"></i><span>Builder</span> <span class="fa arrow"></span></a>
               <ul class="children collapse">
@@ -141,7 +141,7 @@
               </ul>
             </li>-->
           </ul>
-          <div class="sidebar-footer clearfix">
+          <!-- <div class="sidebar-footer clearfix">
             <a class="pull-left footer-settings" href="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
             <i class="icon-settings"></i></a>
             <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
@@ -150,7 +150,7 @@
             <i class="icon-lock"></i></a>
             <a class="pull-left btn-effect" href="#" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
             <i class="icon-power"></i></a>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- END SIDEBAR -->
@@ -161,10 +161,9 @@
             <div class="topnav">
               <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
               <ul class="nav nav-icons">
-                <!-- <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li> -->
                 <li><a href="https://app.calculatietool.com/login"><span class="octicon octicon-device-desktop"></span></a></li>
-                <!-- <li><a href="#"><span class="octicon octicon-flame"></span></a></li> -->
-                <!-- <li><a href="builder-page.html"><span class="octicon octicon-rocket"></span></a></li> -->
+                <li><a href="/sync"><span class="octicon octicon-sync"></span></a></li>
+                <li>Last update: {{ isset($last_update) ? $last_update->created_at->diffForHumans() : '-' }}</li>
               </ul>
             </div>
           </div>

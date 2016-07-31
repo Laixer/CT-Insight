@@ -82,7 +82,7 @@
             </ul>
             <div class="tab-content">
               <div class="title-stock">
-                <h1>Historical user progression</h1>
+                <h1>User inclination</h1>
                 <span class="c-red">-8.425%</span>
               </div>
               <div class="tab-pane" id="yahoo-tab" style="display:none">

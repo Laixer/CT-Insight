@@ -12,6 +12,7 @@
 */
 
 use App\User;
+use App\Stats;
 use App\RemoteappUser;
 use App\RemoteappProject;
 
@@ -42,11 +43,19 @@ Route::group(['middleware' => 'auth'], function() {
 		return view('blank');
 	});
 
+	Route::get('/sync', function () {
+
+		$exitCode = Artisan::call('import');
+
+		return view('sync');
+	});
+
 	Route::get('/board', function () {
 		return view('main', [
 			'total_users' => RemoteappUser::count(),
 			'total_projects' => RemoteappProject::count(),
 			'top_users' => RemoteappUser::orderBy('id', 'desc')->limit(5)->get(),
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
 		]);
 	});
 
