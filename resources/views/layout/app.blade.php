@@ -171,6 +171,7 @@
           <div class="header-right">
             <ul class="header-menu nav navbar-nav">
               <!-- BEGIN NOTIFICATION DROPDOWN -->
+              @if (0)
               <li class="dropdown" id="notifications-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <i class="icon-bell"></i>
@@ -248,6 +249,7 @@
                   </li>
                 </ul>
               </li>
+              @endif
               <!-- END NOTIFICATION DROPDOWN -->
               <!-- BEGIN USER DROPDOWN -->
               <li class="dropdown" id="user-header">

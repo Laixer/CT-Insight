@@ -109,64 +109,7 @@
 
 
     <div class="col-xlg-3 col-lg-5 col-visitors">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel no-bd bd-3 panel-stat">
-            <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Application</strong> Statistics</h3>
-              <div class="control-btn">
-                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
-              </div>
-            </div>
-            <div class="panel-body p-15 p-b-0">
-              <div class="row m-b-10">
-                <div class="col-xs-3 big-icon">
-                  <i class="icon-users"></i>
-                </div>
-                <div class="col-xs-9">
-                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
-                    <div>
-                      <small class="stat-title">Total users</small>
-                      <h1 class="f-40 m-0 w-300">{{ $total_users }}</h1>
-                    </div>
-                    <div>
-                      <small class="stat-title">Total projects</small>
-                      <h1 class="f-40 m-0 w-300">{{ $total_projects }}</h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <small class="stat-title">New Visitors</small>
-                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300">37.5%</h3>
-                    </div>
-                    <div>
-                      <h3 class="f-20 m-0 w-300">34.2%</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <small class="stat-title">Bounce Rate</small>
-                  <div class="live-tile f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 t-right m-0 w-500">5.6%</h3>
-                    </div>
-                    <div>
-                      <h3 class="f-20 t-right m-0 w-500">7.4%</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="panel-stat-chart">
-              <canvas id="visitors-chart"></canvas>
-            </div> -->
-          </div>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
@@ -247,56 +190,67 @@
           </div>
         </div>
       </div>
-      <div class="row" style="display:none">
+      <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
-            <div class="panel-body bg-red p-15">
-              <div class="row m-b-10">
-                <div class="col-xs-3 big-icon">
-                  <i class="icon-equalizer"></i>
-                </div>
-                <div class="col-xs-9">
-                  <small class="stat-title">ORDERS THIS MONTH</small>
-                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="56">
-                    <div>
-                      <h1 class="f-40 m-0 w-300">148</h1>
-                    </div>
-                    <div>
-                      <h1 class="f-40 m-0 w-300">+28%</h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <small class="stat-title">Last month</small>
-                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300">126</h3>
-                    </div>
-                    <div>
-                      <h3 class="f-20 m-0 w-300">$12,545</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <small class="stat-title">Last week</small>
-                  <div class="live-tile f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="t-right f-20 m-0 w-500">43</h3>
-                    </div>
-                    <div>
-                      <h3 class="t-right f-20 m-0 w-500">$4,237</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="panel-header">
+              <h3><i class="icon-graph"></i> <strong>Last 5</strong> Users</h3>
+            </div>
+            <div class="panel-body p-15 p-b-0">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($top_users as $user)
+                  <tr>
+                    <td>{{ $user->firstname }}</td>
+                    <td><span class="c-primary">{{ $user->username }}</span></td>
+                    <td>
+                      <div class="badge badge-success">Active</div>
+                    </td>
+                  </tr>
+                  @endforeach
+                  <!-- <tr>
+                    <td>online.com</td>
+                    <td><span class="c-primary">$19.99</span></td>
+                    <td>
+                      <div class="badge badge-success">Active</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>newsite.es</td>
+                    <td><span class="c-primary">$16.45</span></td>
+                    <td>
+                      <div class="badge badge-warning">Pending</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>web.uk</td>
+                    <td><span class="c-primary">$15.00</span></td>
+                    <td>
+                      <div class="badge badge-warning">Pending</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>domain.com</td>
+                    <td><span class="c-primary">$18.40</span></td>
+                    <td>
+                      <div class="badge badge-danger">Inactive</div>
+                    </td> -->
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xlg-2 hidden-lg col-clock">
+    <div class="col-xlg-2 hidden-lg">
       <!--<div class="row">
         <div class="col-md-12">
           <ul class="jquery-clock small" data-jquery-clock="">
@@ -307,7 +261,64 @@
           </ul>
         </div>
       </div>-->
+
       <div class="row">
+        <div class="col-md-12">
+          <div class="panel no-bd bd-3 panel-stat">
+            <div class="panel-header">
+              <h3><i class="icon-graph"></i> <strong>Application</strong> Statistics</h3>
+              <div class="control-btn">
+                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
+              </div>
+            </div>
+            <div class="panel-body p-15 p-b-0">
+              <div class="row m-b-10">
+                <div class="col-xs-3 big-icon">
+                  <i class="icon-users"></i>
+                </div>
+                <div class="col-xs-9">
+                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
+                    <div>
+                      <small class="stat-title">Total users</small>
+                      <h1 class="f-40 m-0 w-300">{{ $total_users }}</h1>
+                    </div>
+                    <div>
+                      <small class="stat-title">Total projects</small>
+                      <h1 class="f-40 m-0 w-300">{{ $total_projects }}</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <small class="stat-title">New Visitors</small>
+                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
+                    <div>
+                      <h3 class="f-20 m-0 w-300">37.5%</h3>
+                    </div>
+                    <div>
+                      <h3 class="f-20 m-0 w-300">34.2%</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <small class="stat-title">Bounce Rate</small>
+                  <div class="live-tile f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
+                    <div>
+                      <h3 class="f-20 t-right m-0 w-500">5.6%</h3>
+                    </div>
+                    <div>
+                      <h3 class="f-20 t-right m-0 w-500">7.4%</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="row">
         <div class="col-md-12">
           <div class="widget-progress-bar">
             <div class="clearfix">
@@ -340,112 +351,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
-  <div class="row">
-    <div class="col-xlg-4">
-      <div class="panel">
-        <div class="panel-header panel-controls">
-          <h3><i class="icon-graph"></i> <strong>Financial</strong> Stock</h3>
-        </div>
-        <div class="panel-content widget-full widget-stock stock1">
-          <div class="tabs tabs-linetriangle">
-            <ul class="nav nav-tabs nav-4">
-              <li class="lines-3">
-                <a href="#microsoft-tab" id="microsoft" data-toggle="tab">
-                <span class="title">Microsoft</span>
-                <span class="c-gray"><strong>23.32</strong></span>
-                <span class="c-green">+6.214%</span>
-                </a>
-              </li>
-              <li class="active lines-3">
-                <a href="#sony-tab" id="sony" data-toggle="tab">
-                <span class="title">Sony</span>
-                <span class="c-gray"><strong>23.32</strong></span>
-                <span class="c-red">-8.425%</span>
-                </a>
-              </li>
-              <li class="lines-3">
-                <a href="#samsung-tab"  id="samsung" data-toggle="tab">
-                <span class="title">Samsung</span>
-                <span class="c-gray"><strong>23.32</strong></span>
-                <span class="c-green">+2.035%</span>
-                </a>
-              </li>
-              <li class="lines-3">
-                <a href="#apple-tab"  id="apple" data-toggle="tab">
-                <span class="title">Apple</span>
-                <span class="c-gray"><strong>23.32</strong></span>
-                <span class="c-green">+1.245%</span>
-                </a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane" id="microsoft-tab">
-                <div id="stock-microsoft"></div>
-              </div>
-              <div class="tab-pane active" id="sony-tab">
-                <div id="stock-sony"></div>
-              </div>
-              <div class="tab-pane" id="samsung-tab">
-                <div id="stock-samsung"></div>
-              </div>
-              <div class="tab-pane" id="apple-tab">
-                <div id="stock-apple"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xlg-2">
-      <div class="row">
-        <div class="col-xlg-12 col-lg-4 col-sm-4">
-          <div class="panel">
-            <div class="panel-content widget-small bg-green">
-              <div class="title">
-                <h1>Virgin Mobile</h1>
-                <p>Last month trending</p>
-                <span>-8.452%</span>
-              </div>
-              <div class="content">
-                <div id="stock-virgin-sm"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xlg-12 col-lg-4 col-sm-4">
-          <div class="panel">
-            <div class="panel-content widget-small bg-purple">
-              <div class="title">
-                <h1>Ebay Inc</h1>
-                <p>Last month trending</p>
-                <span>+2.124%</span>
-              </div>
-              <div class="content">
-                <div id="stock-ebay-sm"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xlg-12 col-lg-4 col-sm-4">
-          <div class="panel">
-            <div class="panel-content widget-small bg-primary">
-              <div class="title">
-                <h1>Facebook Corp.</h1>
-                <p>Last month trending</p>
-                <span>+1.054%</span>
-              </div>
-              <div class="content">
-                <div id="stock-facebook-sm"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  @if (0)
   <div class="row">
     <div class="col-md-4 col-sm-6 portlets">
       <div class="panel">
@@ -556,5 +465,6 @@
       </div>
     </div>
   </div>
+  @endif
   @include('layout.footer')
 @endsection

@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function() {
 		return view('main', [
 			'total_users' => RemoteappUser::count(),
 			'total_projects' => RemoteappProject::count(),
+			'top_users' => RemoteappUser::orderBy('id', 'desc')->limit(5)->get(),
 		]);
 	});
 
