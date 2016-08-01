@@ -31,50 +31,48 @@
         <div class="panel-content widget-full widget-stock stock2">
           <div class="tab_right">
             <ul class="nav nav-tabs">
-              <li class="lines-3 active">
-                <a href="#yahoo-tab" id="yahoo" data-toggle="tab" data-color="green" data-value="+6.214%">
+
+              <li class="lines-3">
+                <a href="#project-tab" id="project" data-toggle="tab" data-line="#C9625F" data-color="red" data-value="-8.425%">
                   <div class="clearfix">
-                    <!-- <span class="title pull-left">YHOO</span> -->
+                    <span class="pull-right">Projects</span>
+                  </div>
+                  <div class="clearfix">
+                    <span class="c-gray pull-left"><strong>{{ $last_update->project_count }}</strong></span>
+                    <span class="c-red pull-right">-8.425%</span>
+                  </div>
+                </a>
+              </li>
+
+              <li class="lines-3 active">
+                <a href="#user-tab" id="user" data-toggle="tab" data-line="#18A689" data-color="green" data-value="+6.214%">
+                  <div class="clearfix">
                     <span class="pull-right">Users</span>
                   </div>
                   <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>23.32</strong></span>
+                    <span class="c-gray pull-left"><strong>{{ $last_update->user_count }}</strong></span>
                     <span class="c-green pull-right">+6.214%</span>
                   </div>
                 </a>
               </li>
               <li class="lines-3">
-                <a href="#google-tab" id="google" data-toggle="tab" data-color="red" data-value="-8.425%">
+                <a href="#offer-tab" id="offer" data-toggle="tab"  data-line="#90ed7d" data-color="green" data-value="+2.035%">
                   <div class="clearfix">
-                    <!-- <span class="title pull-left">GOOG</span> -->
-                    <span class="pull-right">Projects</span>
-                  </div>
-                  <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>22.32</strong></span>
-                    <span class="c-red pull-right">-8.425%</span>
-                  </div>
-                </a>
-              </li>
-              <li class="lines-3">
-                <a href="#nokia-tab"  id="nokia" data-toggle="tab" data-color="green" data-value="+2.035%">
-                  <div class="clearfix">
-                    <!-- <span class="title pull-left">NOK</span> -->
                     <span class="pull-right">Offers</span>
                   </div>
                   <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>25.32</strong></span>
+                    <span class="c-gray pull-left"><strong>{{ $last_update->offer_count }}</strong></span>
                     <span class="c-green pull-right">+2.035%</span>
                   </div>
                 </a>
               </li>
               <li class="lines-3">
-                <a href="#htc-tab"  id="htc" data-toggle="tab" data-color="red" data-value="-1.052%">
+                <a href="#invoice-tab" id="invoice" data-toggle="tab"  data-line="#f7a35c" data-color="red" data-value="-1.052%">
                   <div class="clearfix">
-                    <!-- <span class="title pull-left">HTC</span> -->
                     <span class="pull-right">Invoices</span>
                   </div>
                   <div class="clearfix">
-                    <span class="c-gray pull-left"><strong>18.96</strong></span>
+                    <span class="c-gray pull-left"><strong>{{ $last_update->invoice_count }}</strong></span>
                     <span class="c-red pull-right">-1.052%</span>
                   </div>
                 </a>
@@ -83,24 +81,26 @@
             <div class="tab-content">
               <div class="title-stock">
                 <h1>User inclination</h1>
-                <span class="c-red">-8.425%</span>
+                <span class="c-green">+6.214%</span>
               </div>
-              <div class="tab-pane" id="yahoo-tab" style="display:none">
-                <div id="stock-yahoo"></div>
-                <div class="company-info">Yahoo! Inc. is an American multinational Internet corporation headquartered in Sunnyvale, California. It is globally known for its Web portal, search engine Yahoo Search, and related services.</div>
+              
+              <div class="tab-pane" id="project-tab" style="display:none">
+                <div id="stock-project"></div>
+                <!-- <div class="company-info">Yahoo! Inc. is an American multinational Internet corporation headquartered in Sunnyvale, California. It is globally known for its Web portal, search engine Yahoo Search, and related services.</div> -->
               </div>
-              <div class="tab-pane active" id="google-tab">
-                <div id="stock-google"></div>
-                <div class="company-info">Google is a United States-headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software.</div>
+              <div class="tab-pane active" id="user-tab">
+                <div id="stock-user"></div>
+                <!-- <div class="company-info">Google is a United States-headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software.</div> -->
               </div>
-              <div class="tab-pane" id="nokia-tab" style="display:none">
-                <div id="stock-nokia"></div>
-                <div class="company-info">Nokia is a Finnish multinational communications and information technology company. Nokia employed 90,000 people across 120 countries, conducts sales in more than 150 countries and reported annual revenues of around €12.7 billion.</div>
+              <div class="tab-pane" id="offer-tab" style="display:none">
+                <div id="stock-offer"></div>
+                <!-- <div class="company-info">Nokia is a Finnish multinational communications and information technology company. Nokia employed 90,000 people across 120 countries, conducts sales in more than 150 countries and reported annual revenues of around €12.7 billion.</div> -->
               </div>
-              <div class="tab-pane" id="htc-tab" style="display:none">
-                <div id="stock-htc"></div>
-                <div class="company-info">HTC Corporation is a Taiwanese manufacturer of smartphones and tablets. Founded in 1997, HTC began designing and manufacturing devices such as mobile phones, touchscreen phones, and PDAs based on Windows Mobile OS.</div>
+              <div class="tab-pane" id="invoice-tab" style="display:none">
+                <div id="stock-invoice"></div>
+                <!-- <div class="company-info">HTC Corporation is a Taiwanese manufacturer of smartphones and tablets. Founded in 1997, HTC began designing and manufacturing devices such as mobile phones, touchscreen phones, and PDAs based on Windows Mobile OS.</div> -->
               </div>
+
             </div>
           </div>
         </div>
@@ -284,11 +284,19 @@
                   <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
                     <div>
                       <small class="stat-title">Total users</small>
-                      <h1 class="f-40 m-0 w-300">{{ $total_users }}</h1>
+                      <h1 class="f-40 m-0 w-300">{{ $last_update->user_count }}</h1>
                     </div>
                     <div>
                       <small class="stat-title">Total projects</small>
-                      <h1 class="f-40 m-0 w-300">{{ $total_projects }}</h1>
+                      <h1 class="f-40 m-0 w-300">{{ $last_update->project_count }}</h1>
+                    </div>
+                    <div>
+                      <small class="stat-title">Total Offers</small>
+                      <h1 class="f-40 m-0 w-300">{{ $last_update->offer_count }}</h1>
+                    </div>
+                    <div>
+                      <small class="stat-title">Total Invoices</small>
+                      <h1 class="f-40 m-0 w-300">{{ $last_update->invoice_count }}</h1>
                     </div>
                   </div>
                 </div>

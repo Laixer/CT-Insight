@@ -1,4 +1,4 @@
-<?php $section = 'table'; ?>
+<?php $section = 'users'; ?>
 
 @extends('layout.app')
 

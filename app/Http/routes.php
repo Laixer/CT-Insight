@@ -44,25 +44,27 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 
 	Route::get('/sync', function () {
-
-		$exitCode = Artisan::call('import');
-
 		return view('sync');
 	});
 
 	Route::get('/board', function () {
 		return view('main', [
-			'total_users' => RemoteappUser::count(),
-			'total_projects' => RemoteappProject::count(),
 			'top_users' => RemoteappUser::orderBy('id', 'desc')->limit(5)->get(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
 		]);
 	});
 
-	Route::get('/table', function () {
-		return view('table', [
+	Route::get('/users', function () {
+		return view('users', [
 			'all_users' => RemoteappUser::all(),
-			// 'total_projects' => RemoteappProject::count(),
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
+		]);
+	});
+
+	Route::get('/projects', function () {
+		return view('projects', [
+			'all_projects' => RemoteappProject::all(),
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
 		]);
 	});
 
@@ -70,5 +72,30 @@ Route::group(['middleware' => 'auth'], function() {
 		Auth::logout();
 
 		return redirect('/reauth');
+	});
+
+	Route::group(['prefix' => 'rest'], function() {
+	
+		Route::get('/sync', function () {
+			$exitCode = Artisan::call('import');
+			return response()->json(['success' => true, 'code' => $exitCode]);
+		});
+
+		Route::get('/counters', function () {
+			$users = [];
+			$projects = [];
+			$offers = [];
+			$invoices = [];
+
+			foreach (Stats::orderBy('created_at')->get() as $row) {
+				array_push($users, [strtotime($row->created_at)*1000, $row->user_count]);
+				array_push($projects, [strtotime($row->created_at)*1000, $row->project_count]);
+				array_push($offers, [strtotime($row->created_at)*1000, $row->offer_count]);
+				array_push($invoices, [strtotime($row->created_at)*1000, $row->invoice_count]);
+			}
+
+			return response()->json(['success' => true, 'users' => $users, 'projects' => $projects, 'offers' => $offers, 'invoices' => $invoices]);
+		});
+
 	});
 });
