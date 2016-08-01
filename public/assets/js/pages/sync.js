@@ -21,6 +21,6 @@ $(document).ready(function() {
     setInterval(function () {
       if (percent <= 100)
         $('#updater').text((percent++) + '%');
-    }, Math.floor(Math.random() * 1000) + 100);
+    }, Math.floor(Math.random() * 2000) + 100);
 
 });

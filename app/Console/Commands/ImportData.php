@@ -32,6 +32,8 @@ class ImportData extends Command
     {
         $statistics = new Stats;
 
+        $this->info('Importing users');
+
         \InternalMaintenance::request()->get('user', function ($user) use ($statistics) {
             $remoteapp_user = RemoteappUser::find($user['id']);
             if (!$remoteapp_user)
@@ -68,6 +70,8 @@ class ImportData extends Command
             $remoteapp_user->administration_cost = $user['administration_cost'];
             $remoteapp_user->save();
         });
+
+        $this->info('Importing projects');
 
         \InternalMaintenance::request()->get('project', function ($project) use ($statistics) {
             $remoteapp_project = RemoteappProject::find($project['id']);
@@ -115,5 +119,13 @@ class ImportData extends Command
         $statistics->offer_count = 0;
         $statistics->invoice_count = 0;
         $statistics->save();
+
+        $this->info("Import stats");
+        $this->info("  user count: " . $statistics->user_count);
+        $this->info("  project count: " . $statistics->project_count);
+        $this->info("  chapter count: " . $statistics->chapter_count);
+        $this->info("  activity count: " . $statistics->activity_count);
+        $this->info("  offer count: " . $statistics->offer_count);
+        $this->info("  invoice count: " . $statistics->invoice_count);
     }
 }
