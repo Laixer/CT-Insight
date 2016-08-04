@@ -27,10 +27,10 @@ $(function () {
         ]
       };
 
-      window.myRadar = new Chart(document.getElementById("radar-chart").getContext("2d")).Radar(radarChartData, {
-        responsive: true,
-        tooltipCornerRadius: 0
-      });
+      // window.myRadar = new Chart(document.getElementById("radar-chart").getContext("2d")).Radar(radarChartData, {
+      //   responsive: true,
+      //   tooltipCornerRadius: 0
+      // });
 
       /**** Line Charts: ChartJs ****/
       var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
@@ -59,14 +59,23 @@ $(function () {
           }
         ]
       }
-      var ctx = document.getElementById("line-chart").getContext("2d");
-      window.myLine = new Chart(ctx).Line(lineChartData, {
-        responsive: true,
-        tooltipCornerRadius: 0
-      });
+      // var ctx = document.getElementById("line-chart").getContext("2d");
+      // window.myLine = new Chart(ctx).Line(lineChartData, {
+      //   responsive: true,
+      //   tooltipCornerRadius: 0
+      // });
 
 
       /**** Pie Chart : ChartJs ****/
+      $.getJSON('/rest/users_active', function (data) {
+        if (data.success) {
+          var ctx = document.getElementById("pie-chart").getContext("2d");
+          window.myPie = new Chart(ctx).Pie(data.data, {
+            tooltipCornerRadius: 0
+          });
+        }
+      });
+
       var pieData = [
           {value: 300, color:"rgba(54, 173, 199,0.9)", highlight: "rgba(54, 173, 199,1)", label: "Blue"},
           {value: 40, color: "rgba(201, 98, 95,0.9)", highlight: "rgba(201, 98, 95,1)", label: "Red"},
@@ -81,16 +90,16 @@ $(function () {
           {value: 60, color: "rgba(201, 98, 95,0.9)", highlight: "rgba(201, 98, 95,1)", label: "Red"},
           {value: 60, color: "rgba(97, 103, 116,0.9)", highlight: "rgba(97, 103, 116,1)", label: "Dark Grey"}
       ];
-      var ctx = document.getElementById("pie-chart").getContext("2d");
-      window.myPie = new Chart(ctx).Pie(pieData, {
-        tooltipCornerRadius: 0
-      });
+      // var ctx = document.getElementById("pie-chart").getContext("2d");
+      // window.myPie = new Chart(ctx).Pie(pieData, {
+      //   tooltipCornerRadius: 0
+      // });
 
-      var ctx2 = document.getElementById("pie-chart2").getContext("2d");
-      window.myPie = new Chart(ctx2).Pie(pieData2, {
-        tooltipCornerRadius: 0
+      // var ctx2 = document.getElementById("pie-chart2").getContext("2d");
+      // window.myPie = new Chart(ctx2).Pie(pieData2, {
+      //   tooltipCornerRadius: 0
 
-      });
+      // });
     
       /**** Polar Chart : ChartJs ****/
       var polarData = [
@@ -107,16 +116,16 @@ $(function () {
         {value: 50, color: "rgba(27, 184, 152,0.9)", highlight: "rgba(27, 184, 152,1)", label: "Green"},
         {value: 120, color: "rgba(97, 103, 116,0.9)", highlight: "rgba(97, 103, 116,1)", label: "Dark Grey"}
       ];
-      var ctx = document.getElementById("polar-chart").getContext("2d");
-      window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
-        responsive:true,
-        tooltipCornerRadius: 0
-      });
-      var ctx2 = document.getElementById("polar-chart2").getContext("2d");
-      window.myPolarArea = new Chart(ctx2).PolarArea(polarData2, {
-        responsive:true,
-        tooltipCornerRadius: 0
-      });
+      // var ctx = document.getElementById("polar-chart").getContext("2d");
+      // window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
+      //   responsive:true,
+      //   tooltipCornerRadius: 0
+      // });
+      // var ctx2 = document.getElementById("polar-chart2").getContext("2d");
+      // window.myPolarArea = new Chart(ctx2).PolarArea(polarData2, {
+      //   responsive:true,
+      //   tooltipCornerRadius: 0
+      // });
     
 
 });

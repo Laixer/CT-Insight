@@ -28,7 +28,7 @@
       <div class="sidebar">
         <div class="sidebar-inner">
           <ul class="nav nav-sidebar">
-            <li {!! $section == 'board' ? 'class="active"' : '' !!}><a href="/board"><i class="icon-home"></i><span>Dashboard</span></a></li>
+            <li {!! $section == 'board' ? 'class="active"' : '' !!}><a href="/"><i class="icon-home"></i><span>Dashboard</span></a></li>
             <li {!! $section == 'users' ? 'class="active"' : '' !!}><a href="/users"><i class="fa fa-users"></i><span>Users</span></a></li>
             <li {!! $section == 'projects' ? 'class="active"' : '' !!}><a href="/projects"><i class="fa fa-file-text-o"></i><span>Projects</span></a></li>
             <!--<li class="nav-parent">
@@ -163,7 +163,7 @@
               <ul class="nav nav-icons">
                 <!-- <li><a href="https://app.calculatietool.com/login"><span class="octicon octicon-device-desktop"></span></a></li> -->
                 <li><a href="/sync"><span class="octicon octicon-sync"></span></a></li>
-                <li>Last update: {{ isset($last_update) ? $last_update->created_at->diffForHumans() : '-' }}</li>
+                <li>Last update: {{ $last_update->created_at->diffForHumans() }}</li>
               </ul>
             </div>
           </div>
@@ -332,6 +332,9 @@
     <!-- <script src="/assets/plugins/simple-weather/jquery.simpleWeather.js"></script> <!-- Weather Plugin --> -->
     <!-- <script src="/assets/js/widgets/widget_weather.js"></script> -->
     <script src="/assets/js/pages/dashboard.js"></script>
+    <!-- END PAGE SCRIPTS -->
+    <!-- BEGIN PAGE SCRIPTS -->
+    <script src="/assets/js/pages/charts.js"></script>
     <!-- END PAGE SCRIPTS -->
     <!-- BEGIN PAGE SCRIPTS -->
     <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->

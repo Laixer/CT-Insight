@@ -35,10 +35,6 @@ Route::get('/reauth', function () {
 })->middleware('guest');
 
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/', function () {
-		return view('welcome');
-	});
-
 	Route::get('/blank', function () {
 		return view('blank');
 	});
@@ -47,7 +43,21 @@ Route::group(['middleware' => 'auth'], function() {
 		return view('sync');
 	});
 
-	Route::get('/board', function () {
+	Route::get('/imports', function () {
+		return view('imports', [
+			'all_imports' => Stats::orderBy('created_at', 'desc')->get(),
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
+		]);
+	});
+
+	/*Route::get('/query', function () {
+		return view('query', [
+			'all_imports' => Stats::orderBy('created_at', 'desc')->get(),
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
+		]);
+	});*/
+
+	Route::get('/', function () {
 		return view('main', [
 			'top_users' => RemoteappUser::orderBy('id', 'desc')->limit(5)->get(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
@@ -95,6 +105,20 @@ Route::group(['middleware' => 'auth'], function() {
 			}
 
 			return response()->json(['success' => true, 'users' => $users, 'projects' => $projects, 'offers' => $offers, 'invoices' => $invoices]);
+		});
+
+		Route::get('/users_active', function () {
+			$list = \DB::table('remoteapp_users')
+				->selectRaw('active, count(id) as total')
+				->groupBy('active')
+				->lists('total', 'active');
+
+			$data = [
+				["value" => $list[0], "color" => "rgba(27, 184, 152,0.9)", "highlight" => "rgba(27, 184, 152,1)", "label" => "Inactive"],
+				["value" => $list[1], "color" => "rgba(97, 103, 116,0.9)", "highlight" => "rgba(97, 103, 116,1)", "label" => "Active"]
+			];
+
+			return response()->json(['success' => true, 'data' => $data]);
 		});
 
 	});

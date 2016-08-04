@@ -8,7 +8,7 @@
     <div class="breadcrumb-wrapper">
       <ol class="breadcrumb">
         <li>
-          <a href="/board">Home</a>
+          <a href="/">Home</a>
         </li>
         <li class="active">Users</li>
       </ol>

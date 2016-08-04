@@ -1,16 +1,16 @@
-<?php $section = 'users'; ?>
+<?php $section = 'imports'; ?>
 
 @extends('layout.app')
 
 @section('content')
   <div class="header">
-    <h2>Application <strong>users</strong></h2>
+    <h2>WebJob <strong>imports</strong></h2>
     <div class="breadcrumb-wrapper">
       <ol class="breadcrumb">
         <li>
           <a href="/">Home</a>
         </li>
-        <li class="active">Users</li>
+        <li class="active">Imports</li>
       </ol>
     </div>
   </div>
@@ -18,7 +18,7 @@
     <div class="col-lg-12 portlets">
       <div class="panel">
         <div class="panel-header">
-          <h3><i class="fa fa-table"></i> <strong>Application </strong> users</h3>
+          <h3><i class="fa fa-table"></i> <strong>WebJob </strong> imports</h3>
         </div>
         <div class="panel-content">
           <table class="table dataTable" id="table2">
@@ -26,31 +26,43 @@
               <tr>
                 <th class="no_sort" tabindex="0" rowspan="1" colspan="1" style="width: 42px;"></th>
                 <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1" style="width: 279px;">
-                  Username
+                  ID
                 </th>
                 <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 350px;">
-                  Full name
+                  Users
                 </th>
                 <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 322px;">
-                  Email
+                  Projects
                 </th>
                 <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 241px;">
-                  Gender
+                  Chapters
+                </th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 241px;">
+                  Activities
+                </th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 241px;">
+                  Offers
+                </th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 241px;">
+                  Invoices
                 </th>
                 <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 171px;">
-                  Active
+                  Run
                 </th>
               </tr>
             </thead>
             <tbody role="alert" aria-live="polite" aria-relevant="all">
-              @foreach($all_users as $user)
+              @foreach($all_imports as $import)
               <tr class="gradeA odd">
-                <td class="center "></td>
-                <td class=" sorting_1">{{ $user->username }}</td>
-                <td class=" ">{{ $user->firstname }} {{ $user->lastname }}</td>
-                <td class=" ">{{ $user->email }}</td>
-                <td class="center ">{{ $user->genderName() }}</td>
-                <td class="center ">{{ $user->active ? 'Yes' : 'No' }}</td>
+                <td class=""></td>
+                <td class="sorting_1">{{ $import->id }}</td>
+                <td class="">{{ $import->user_count }}</td>
+                <td class="">{{ $import->project_count }}</td>
+                <td class="">{{ $import->chapter_count }}</td>
+                <td class="">{{ $import->activity_count }}</td>
+                <td class="">{{ $import->offer_count }}</td>
+                <td class="">{{ $import->invoice_count }}</td>
+                <td class="">{{ $import->created_at }}</td>
               </tr>
               @endforeach
             </tbody>

@@ -29,7 +29,7 @@
                         <h5>This may take a while</h5>
                         <h2 id="updater">0%</h2>
                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vulputate arcu sit amet sem venenatis dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse eu massa sed orci interdum lobortis. Vivamus rutrum.</p> -->
-                        <p id="todashboard" style="display:none"><a href="/board">Dashboard &#187;</a></p>
+                        <p id="todashboard" style="display:none"><a href="/">Dashboard &#187;</a></p>
                     </section>
                 </div>
             </div>

@@ -4,28 +4,6 @@
 
 @section('content')
   <div class="row">
-<!--     <div class="col-xlg-7 col-lg-7">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel bg-dark widget-map">
-            <div class="panel-header">
-              <h3><i class="icon-globe-alt"></i> <strong>Interactif</strong> Map</h3>
-            </div>
-            <div class="panel-content widget-full">
-              <div class="row">
-                <div class="col-md-12">
-                  <div id="map"></div>
-                </div>
-                <div class="col-md-3 c-white">
-                  <div id="listdiv"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
     <div class="col-xlg-6">
       <div class="panel">
         <div class="panel-content widget-full widget-stock stock2">
@@ -107,8 +85,67 @@
       </div>
     </div>
 
+      <div class="row">
+        <div class="col-xlg-6">
+          <div class="panel no-bd bd-3 panel-stat">
+            <div class="panel-header">
+              <h3><i class="icon-graph"></i> <strong>Last 5</strong> Users</h3>
+            </div>
+            <div class="panel-body p-15 p-b-0">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($top_users as $user)
+                  <tr>
+                    <td>{{ $user->firstname }}</td>
+                    <td><span class="c-primary">{{ $user->username }}</span></td>
+                    <td>
+                      @if ($user->confirmed_mail)
+                      <div class="badge badge-success">Active</div>
+                      @else
+                      <div class="badge badge-warning">Pending</div>
+                      @endif
+                    </td>
+                  </tr>
+                  @endforeach
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="col-xlg-3 col-lg-5 col-visitors">
+    <div class="col-xlg-3 col-lg-5">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel no-bd bd-3 panel-stat">
+            <div class="panel-header">
+              <h3><i class="icon-graph"></i> <strong>Active</strong> Users</h3>
+              <div class="control-btn">
+                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
+              </div>
+            </div>
+            <div class="panel-body p-15 p-b-0">
+             <div class="row">
+                <div class="col-md-6">
+                  <canvas id="pie-chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xlg-3 col-lg-5">
 
       <div class="row">
         <div class="col-md-12">
@@ -219,33 +256,6 @@
                     </td>
                   </tr>
                   @endforeach
-                  <!-- <tr>
-                    <td>online.com</td>
-                    <td><span class="c-primary">$19.99</span></td>
-                    <td>
-                      <div class="badge badge-success">Active</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>newsite.es</td>
-                    <td><span class="c-primary">$16.45</span></td>
-                    <td>
-                      <div class="badge badge-warning">Pending</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>web.uk</td>
-                    <td><span class="c-primary">$15.00</span></td>
-                    <td>
-                      <div class="badge badge-warning">Pending</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>domain.com</td>
-                    <td><span class="c-primary">$18.40</span></td>
-                    <td>
-                      <div class="badge badge-danger">Inactive</div>
-                    </td> -->
                   </tr>
                 </tbody>
               </table>
