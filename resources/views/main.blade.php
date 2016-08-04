@@ -122,6 +122,26 @@
         </div>
       </div>
 
+    <!-- <div class="col-md-4 col-sm-6 portlets">
+      <div class="panel widget-member clearfix">
+        <div class="col-xs-9">
+          <h3 class="m-t-0 member-name"><strong>John Snow</strong></h3>
+          <p class="member-job">Software Engineer</p>
+          <div class="row">
+            <div class="col-xlg-6">
+              <p><i class="icon-envelope c-gray-light p-r-10"></i> cameso@it.com</p>
+              <p><i class="fa fa-facebook c-gray-light p-r-10"></i> fb.com/jsnow</p>
+            </div>
+            <div class="col-xlg-6 align-right">
+              <p><i class="icon-calendar c-gray-light p-r-10"></i> 6 may 2014</p>
+              <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
     <div class="col-xlg-3 col-lg-5">
 
       <div class="row">
@@ -138,6 +158,7 @@
                 <div class="col-md-6">
                   <canvas id="pie-chart"></canvas>
                 </div>
+                <br />
               </div>
             </div>
           </div>
@@ -313,13 +334,14 @@
               </div>
               <div class="row">
                 <div class="col-xs-6">
-                  <small class="stat-title">New Visitors</small>
-                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
+                  <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
                     <div>
-                      <h3 class="f-20 m-0 w-300">37.5%</h3>
+                      <small class="stat-title">Average hour rate</small>
+                      <h3 class="f-20 m-0 w-300">&euro; {{ $avg_hour }}</h3>
                     </div>
                     <div>
-                      <h3 class="f-20 m-0 w-300">34.2%</h3>
+                    <small class="stat-title">Average hour rate additional</small>
+                      <h3 class="f-20 m-0 w-300">&euro; {{ $avg_hour_more }}</h3>
                     </div>
                   </div>
                 </div>

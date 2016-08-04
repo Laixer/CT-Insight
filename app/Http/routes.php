@@ -61,6 +61,8 @@ Route::group(['middleware' => 'auth'], function() {
 		return view('main', [
 			'top_users' => RemoteappUser::orderBy('id', 'desc')->limit(5)->get(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
+			'avg_hour' => number_format(RemoteappProject::avg('hour_rate'), 2),
+			'avg_hour_more' => number_format(RemoteappProject::whereNotNull('hour_rate_more')->avg('hour_rate_more'), 2),
 		]);
 	});
 
@@ -114,8 +116,8 @@ Route::group(['middleware' => 'auth'], function() {
 				->lists('total', 'active');
 
 			$data = [
-				["value" => $list[0], "color" => "rgba(27, 184, 152,0.9)", "highlight" => "rgba(27, 184, 152,1)", "label" => "Inactive"],
-				["value" => $list[1], "color" => "rgba(97, 103, 116,0.9)", "highlight" => "rgba(97, 103, 116,1)", "label" => "Active"]
+				["value" => $list[0], "color" => "rgba(97, 103, 116,0.9)", "highlight" => "rgba(97, 103, 116,1)", "label" => "Inactive"],
+				["value" => $list[1], "color" => "rgba(27, 184, 152,0.9)", "highlight" => "rgba(27, 184, 152,1)", "label" => "Active"],
 			];
 
 			return response()->json(['success' => true, 'data' => $data]);
