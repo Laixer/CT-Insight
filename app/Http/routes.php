@@ -80,6 +80,12 @@ Route::group(['middleware' => 'auth'], function() {
 		]);
 	});
 
+	Route::get('/servers', function () {
+		return view('servers', [
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
+		]);
+	});
+
 	Route::get('/logout', function () {
 		Auth::logout();
 
@@ -118,6 +124,19 @@ Route::group(['middleware' => 'auth'], function() {
 			$data = [
 				["value" => $list[0], "color" => "rgba(97, 103, 116,0.9)", "highlight" => "rgba(97, 103, 116,1)", "label" => "Inactive"],
 				["value" => $list[1], "color" => "rgba(27, 184, 152,0.9)", "highlight" => "rgba(27, 184, 152,1)", "label" => "Active"],
+			];
+
+			return response()->json(['success' => true, 'data' => $data]);
+		});
+
+		Route::get('/projects_closed', function () {
+			$list = \DB::table('remoteapp_projects')
+				->selectRaw('count(id) as closed, (select count(id) from remoteapp_projects) as total')
+				->whereNotNull('project_close')->first();
+
+			$data = [
+				["value" => $list->closed, "color" => "rgba(97, 103, 116,0.9)", "highlight" => "rgba(97, 103, 116,1)", "label" => "Closed"],
+				["value" => $list->total, "color" => "rgba(201, 98, 95,0.9)", "highlight" => "rgba(201, 98, 95,1)", "label" => "Open"],
 			];
 
 			return response()->json(['success' => true, 'data' => $data]);

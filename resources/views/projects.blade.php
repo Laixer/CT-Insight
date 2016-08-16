@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12 portlets">
+    <div class="col-lg-12">
       <div class="panel">
         <div class="panel-header">
           <h3><i class="fa fa-table"></i> <strong>Application </strong> users</h3>

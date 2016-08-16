@@ -76,6 +76,15 @@ $(function () {
         }
       });
 
+      $.getJSON('/rest/projects_closed', function (data) {
+        if (data.success) {
+          var ctx = document.getElementById("pie-chart2").getContext("2d");
+          window.myPie = new Chart(ctx).Pie(data.data, {
+            tooltipCornerRadius: 0
+          });
+        }
+      });
+
       var pieData = [
           {value: 300, color:"rgba(54, 173, 199,0.9)", highlight: "rgba(54, 173, 199,1)", label: "Blue"},
           {value: 40, color: "rgba(201, 98, 95,0.9)", highlight: "rgba(201, 98, 95,1)", label: "Red"},

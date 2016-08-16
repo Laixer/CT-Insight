@@ -31,6 +31,7 @@
             <li {!! $section == 'board' ? 'class="active"' : '' !!}><a href="/"><i class="icon-home"></i><span>Dashboard</span></a></li>
             <li {!! $section == 'users' ? 'class="active"' : '' !!}><a href="/users"><i class="fa fa-users"></i><span>Users</span></a></li>
             <li {!! $section == 'projects' ? 'class="active"' : '' !!}><a href="/projects"><i class="fa fa-file-text-o"></i><span>Projects</span></a></li>
+            <li {!! $section == 'servers' ? 'class="active"' : '' !!}><a href="/servers"><i class="fa fa-server"></i><span>Servers</span></a></li>
             <!--<li class="nav-parent">
               <a href="#"><i class="icon-puzzle"></i><span>Builder</span> <span class="fa arrow"></span></a>
               <ul class="children collapse">

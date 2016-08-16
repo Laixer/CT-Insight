@@ -4,6 +4,8 @@
 
 @section('content')
   <div class="row">
+
+    <!-- panel left -->
     <div class="col-xlg-6">
       <div class="panel">
         <div class="panel-content widget-full widget-stock stock2">
@@ -84,45 +86,48 @@
         </div>
       </div>
     </div>
-
-      <div class="row">
-        <div class="col-xlg-6">
-          <div class="panel no-bd bd-3 panel-stat">
-            <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Last 5</strong> Users</h3>
-            </div>
-            <div class="panel-body p-15 p-b-0">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($top_users as $user)
-                  <tr>
-                    <td>{{ $user->firstname }}</td>
-                    <td><span class="c-primary">{{ $user->username }}</span></td>
-                    <td>
-                      @if ($user->confirmed_mail)
-                      <div class="badge badge-success">Active</div>
-                      @else
-                      <div class="badge badge-warning">Pending</div>
-                      @endif
-                    </td>
-                  </tr>
-                  @endforeach
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+    <!--/ panel left -->
+      
+    <!-- panel right -->
+    <div class="col-xlg-6">
+      <div class="panel">
+        <div class="panel-header">
+          <h3><i class="icon-graph"></i> <strong>Last 5</strong> Users</h3>
+        </div>
+        <div class="panel-body p-15 p-b-0">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($top_users as $user)
+              <tr>
+                <td>{{ $user->firstname }}</td>
+                <td><span class="c-primary">{{ $user->username }}</span></td>
+                <td>
+                  @if ($user->confirmed_mail)
+                  <div class="badge badge-success">Active</div>
+                  @else
+                  <div class="badge badge-warning">Pending</div>
+                  @endif
+                </td>
+              </tr>
+              @endforeach
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
+    <!--/ panel right -->
 
-    <!-- <div class="col-md-4 col-sm-6 portlets">
+  </div>
+
+    <!--<div class="col-md-4 col-sm-6 portlets">
       <div class="panel widget-member clearfix">
         <div class="col-xs-9">
           <h3 class="m-t-0 member-name"><strong>John Snow</strong></h3>
@@ -141,17 +146,15 @@
       </div>
     </div> -->
 
+  <div class="row">
 
-    <div class="col-xlg-3 col-lg-5">
-
+    <!-- pie chart -->
+    <div class="col-xlg-2 col-lg-5">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
             <div class="panel-header">
               <h3><i class="icon-graph"></i> <strong>Active</strong> Users</h3>
-              <div class="control-btn">
-                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
-              </div>
             </div>
             <div class="panel-body p-15 p-b-0">
              <div class="row">
@@ -165,127 +168,30 @@
         </div>
       </div>
     </div>
+    <!--/ pie chart -->
 
-    <div class="col-xlg-3 col-lg-5">
-
+    <!-- pie chart -->
+    <div class="col-xlg-2 col-lg-5">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
             <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Continues</strong> Deployment</h3>
-              <div class="control-btn">
-                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
-              </div>
+              <h3><i class="icon-graph"></i> <strong>Closed</strong> Projects</h3>
             </div>
             <div class="panel-body p-15 p-b-0">
-              <div class="row">
-                <div class="col-xs-12">
-                  <small class="stat-title">Production environments</small>
-                  <div class="f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300"><img src="https://calctool.deploybot.com/badge/88313865850840/10989.svg" alt="Deployment status from DeployBot"></h3>
-                    </div>
-                  </div>
+             <div class="row">
+                <div class="col-md-6">
+                  <canvas id="pie-chart2"></canvas>
                 </div>
+                <br />
               </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <small class="stat-title">Staging environments</small>
-                  <div class="f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300"><img src="https://calctool.deploybot.com/badge/66802253877960/75686.svg" alt="Deployment status from DeployBot"></h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <small class="stat-title">Development environments</small>
-                  <div class="f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300"><img src="https://calctool.deploybot.com/badge/45290641905080/14441.svg" alt="Deployment status from DeployBot" /></h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel no-bd bd-3 panel-stat">
-            <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Continues</strong> Intgration</h3>
-              <div class="control-btn">
-                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
-              </div>
-            </div>
-            <div class="panel-body p-15 p-b-0">
-              <div class="row">
-                <div class="col-xs-12">
-                  <small class="stat-title">Master</small>
-                  <div class="f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300"><img src="https://codeship.com/projects/ffb6a140-26a5-0134-8351-0ee1950dc067/status?branch=master"></h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <small class="stat-title">Production</small>
-                  <div class="f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 m-0 w-300"><img src="https://codeship.com/projects/ffb6a140-26a5-0134-8351-0ee1950dc067/status?branch=production"></h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel no-bd bd-3 panel-stat">
-            <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Last 5</strong> Users</h3>
-            </div>
-            <div class="panel-body p-15 p-b-0">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($top_users as $user)
-                  <tr>
-                    <td>{{ $user->firstname }}</td>
-                    <td><span class="c-primary">{{ $user->username }}</span></td>
-                    <td>
-                      @if ($user->confirmed_mail)
-                      <div class="badge badge-success">Active</div>
-                      @else
-                      <div class="badge badge-warning">Pending</div>
-                      @endif
-                    </td>
-                  </tr>
-                  @endforeach
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xlg-2 hidden-lg">
+    <!--/ pie chart -->
+
       <!--<div class="row">
         <div class="col-md-12">
           <ul class="jquery-clock small" data-jquery-clock="">
@@ -297,14 +203,13 @@
         </div>
       </div>-->
 
+    <!-- quick stats -->
+    <div class="col-xlg-2 col-lg-5">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
             <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Application</strong> Statistics</h3>
-              <div class="control-btn">
-                <a href="#" class="panel-reload hidden"><i class="icon-reload"></i></a>
-              </div>
+              <h3><i class="icon-graph"></i> <strong>Quick</strong> Statistics</h3>
             </div>
             <div class="panel-body p-15 p-b-0">
               <div class="row m-b-10">
@@ -340,7 +245,7 @@
                       <h3 class="f-20 m-0 w-300">&euro; {{ $avg_hour }}</h3>
                     </div>
                     <div>
-                    <small class="stat-title">Average hour rate additional</small>
+                    <small class="stat-title">Average additional</small>
                       <h3 class="f-20 m-0 w-300">&euro; {{ $avg_hour_more }}</h3>
                     </div>
                   </div>
@@ -361,6 +266,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <!--/ quick stats -->
+
+  </div>
 
       <!--<div class="row">
         <div class="col-md-12">
@@ -398,117 +307,5 @@
       </div>-->
     </div>
   </div>
-  @if (0)
-  <div class="row">
-    <div class="col-md-4 col-sm-6 portlets">
-      <div class="panel">
-        <div class="panel-header panel-controls">
-          <h3><i class="icon-list"></i> <strong>Todo</strong> List</h3>
-        </div>
-        <div class="panel-content">
-          <ul class="todo-list ui-sortable">
-            <li class="high">
-              <span class="span-check">
-              <input id="task-1" type="checkbox" data-checkbox="icheckbox_square-blue" />
-              <label for="task-1"></label>
-              </span>
-              <span class="todo-task">Send email to Bob Linch</span>
-              <div class="todo-date clearfix">
-                <div class="completed-date"></div>
-                <div class="due-date">Due on <span class="due-date-span">15 December 2014</span></div>
-              </div>
-              <span class="todo-options pull-right">
-              <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
-              </span>
-              <div class="todo-tags pull-right">
-                <div class="label label-success">Work</div>
-              </div>
-            </li>
-            <li>
-              <span class="span-check">
-              <input id="task-2" type="checkbox" data-checkbox="icheckbox_square-blue"/>
-              <label for="task-2"></label>
-              </span>
-              <span class="todo-task">Call datacenter for servers</span>
-              <div class="todo-date clearfix">
-                <div class="completed-date"></div>
-                <div class="due-date">Due on <span class="due-date-span">7 January</span></div>
-              </div>
-              <span class="todo-options pull-right">
-              <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
-              </span>
-            </li>
-            <li class="low">
-              <span class="span-check">
-              <input id="task-3" type="checkbox" data-checkbox="icheckbox_square-blue"/>
-              <label for="task-3"></label>
-              </span>
-              <span class="todo-task">Remove all unused icons</span>
-              <div class="todo-date clearfix">
-                <div class="completed-date"></div>
-                <div class="due-date">Due on <span class="due-date-span">5 January</span></div>
-              </div>
-              <span class="todo-options pull-right">
-              <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
-              </span>
-            </li>
-            <li class="medium">
-              <span class="span-check">
-              <input id="task-4" type="checkbox" data-checkbox="icheckbox_square-blue"/>
-              <label for="task-4"></label>
-              </span>
-              <span class="todo-task">Read my todo list</span>
-              <div class="todo-date clearfix">
-                <div class="completed-date"></div>
-                <div class="due-date">Due on <span class="due-date-span">4 January</span></div>
-              </div>
-              <span class="todo-options pull-right">
-              <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
-              </span>
-              <div class="todo-tags pull-right">
-                <div class="label label-info">Tuesday</div>
-              </div>
-            </li>
-            <li>
-              <span class="span-check">
-              <input id="task-6" type="checkbox" data-checkbox="icheckbox_square-blue"/>
-              <label for="task-6"></label>
-              </span>
-              <span class="todo-task">Have a breakfeast before 12</span>
-              <div class="todo-date clearfix">
-                <div class="completed-date"></div>
-                <div class="due-date">Due on <span class="due-date-span">1 January</span></div>
-              </div>
-              <span class="todo-options pull-right">
-              <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
-              </span>
-            </li>
-          </ul>
-          <div class="clearfix m-t-10">
-            <div class="pull-left">
-              <button type="button" class="btn btn-sm btn-default check-all-tasks">Check All Done</button>
-            </div>
-            <div class="pull-right">
-              <button type="button" class="btn btn-sm btn-dark add-task">Add Task</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 portlets">
-      <!-- <div class="widget widget_calendar bg-dark">
-        <div class="multidatepicker"></div>
-      </div> -->
-      <div class="panel m-t-0">
-        <div class="panel-header panel-controls">
-          <h3><i class="icon-basket"></i> <strong>Sales</strong> Volume Stats</h3>
-        </div>
-        <div class="panel-content p-t-0 p-b-0">
-          <div id="bar-chart"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  @endif
   @include('layout.footer')
 @endsection

@@ -26,6 +26,7 @@ $(function() {
         $('#stock-' + tabName).highcharts('StockChart', {
             chart: {
                 height: 277,
+                // width: $('#stock-user').width(),
                 plotBorderColor: '#C21414',
                 plotBorderColor: '#C21414'
             },
@@ -102,7 +103,6 @@ $(function() {
             return letter.toUpperCase();
         });
         $('.title-stock h1').text(title + ' inclination');
-        $('.title-stock span').removeClass().addClass('c-' + current_color).text(current_value);
         stockCharts2(current_stock, current_line);
     });
 
