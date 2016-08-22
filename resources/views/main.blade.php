@@ -5,8 +5,10 @@
 @section('content')
   <div class="row">
 
-    <!-- panel left -->
     <div class="col-xlg-6">
+
+    <!-- panel left -->
+    <!-- <div class="col-xlg-6"> -->
       <div class="panel">
         <div class="panel-content widget-full widget-stock stock2">
           <div class="tab_right">
@@ -85,71 +87,11 @@
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     <!--/ panel left -->
-      
-    <!-- panel right -->
-    <div class="col-xlg-6">
-      <div class="panel">
-        <div class="panel-header">
-          <h3><i class="icon-graph"></i> <strong>Last 5</strong> Users</h3>
-        </div>
-        <div class="panel-body p-15 p-b-0">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($top_users as $user)
-              <tr>
-                <td>{{ $user->firstname }}</td>
-                <td><span class="c-primary">{{ $user->username }}</span></td>
-                <td>
-                  @if ($user->confirmed_mail)
-                  <div class="badge badge-success">Active</div>
-                  @else
-                  <div class="badge badge-warning">Pending</div>
-                  @endif
-                </td>
-              </tr>
-              @endforeach
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <!--/ panel right -->
-
-  </div>
-
-    <!--<div class="col-md-4 col-sm-6 portlets">
-      <div class="panel widget-member clearfix">
-        <div class="col-xs-9">
-          <h3 class="m-t-0 member-name"><strong>John Snow</strong></h3>
-          <p class="member-job">Software Engineer</p>
-          <div class="row">
-            <div class="col-xlg-6">
-              <p><i class="icon-envelope c-gray-light p-r-10"></i> cameso@it.com</p>
-              <p><i class="fa fa-facebook c-gray-light p-r-10"></i> fb.com/jsnow</p>
-            </div>
-            <div class="col-xlg-6 align-right">
-              <p><i class="icon-calendar c-gray-light p-r-10"></i> 6 may 2014</p>
-              <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-  <div class="row">
-
+    
     <!-- pie chart -->
-    <div class="col-xlg-2 col-lg-5">
+    <div class="col-xlg-4 col-lg-5 p-0">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
@@ -171,7 +113,7 @@
     <!--/ pie chart -->
 
     <!-- pie chart -->
-    <div class="col-xlg-2 col-lg-5">
+    <div class="col-xlg-4 col-lg-5">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
@@ -192,24 +134,13 @@
     </div>
     <!--/ pie chart -->
 
-      <!--<div class="row">
-        <div class="col-md-12">
-          <ul class="jquery-clock small" data-jquery-clock="">
-            <li class="jquery-clock-pin"></li>
-            <li class="jquery-clock-sec"></li>
-            <li class="jquery-clock-min"></li>
-            <li class="jquery-clock-hour"></li>
-          </ul>
-        </div>
-      </div>-->
-
     <!-- quick stats -->
-    <div class="col-xlg-2 col-lg-5">
+    <div class="col-xlg-4 col-lg-5 p-0">
       <div class="row">
         <div class="col-md-12">
           <div class="panel no-bd bd-3 panel-stat">
             <div class="panel-header">
-              <h3><i class="icon-graph"></i> <strong>Quick</strong> Statistics</h3>
+              <h3><i class="icon-graph"></i> <strong>Quick</strong> Totals</h3>
             </div>
             <div class="panel-body p-15 p-b-0">
               <div class="row m-b-10">
@@ -219,11 +150,15 @@
                 <div class="col-xs-9">
                   <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
                     <div>
-                      <small class="stat-title">Total users</small>
+                      <small class="stat-title">Total Users</small>
                       <h1 class="f-40 m-0 w-300">{{ $last_update->user_count }}</h1>
                     </div>
                     <div>
-                      <small class="stat-title">Total projects</small>
+                      <small class="stat-title">Total Relations</small>
+                      <h1 class="f-40 m-0 w-300">{{ $last_update->relation_count }}</h1>
+                    </div>
+                    <div>
+                      <small class="stat-title">Total Projects</small>
                       <h1 class="f-40 m-0 w-300">{{ $last_update->project_count }}</h1>
                     </div>
                     <div>
@@ -248,16 +183,21 @@
                     <small class="stat-title">Average additional</small>
                       <h3 class="f-20 m-0 w-300">&euro; {{ $avg_hour_more }}</h3>
                     </div>
+                    <div>
+                    <small class="stat-title">Average administr</small>
+                      <h3 class="f-20 m-0 w-300">&euro; {{ $avg_hour_administration }}</h3>
+                    </div>
                   </div>
                 </div>
                 <div class="col-xs-6">
-                  <small class="stat-title">Bounce Rate</small>
-                  <div class="live-tile f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                    <div>
-                      <h3 class="f-20 t-right m-0 w-500">5.6%</h3>
+                  <div class="live-tile f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
+                    <div class="t-right">
+                      <small class="stat-title">Chapters</small>
+                      <h3 class="f-20 t-right m-0 w-500">{{ $last_update->chapter_count }}</h3>
                     </div>
-                    <div>
-                      <h3 class="f-20 t-right m-0 w-500">7.4%</h3>
+                    <div class="t-right">
+                      <small class="stat-title">Activities</small>
+                      <h3 class="f-20 t-right m-0 w-500">{{ $last_update->activity_count }}</h3>
                     </div>
                   </div>
                 </div>
@@ -268,6 +208,114 @@
       </div>
     </div>
     <!--/ quick stats -->
+
+
+    </div>
+    <div class="col-xlg-6">
+      
+    <!-- panel right -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3><i class="icon-graph"></i> <strong>Last</strong> Users to Signup</h3>
+        </div>
+        <div class="panel-body p-15 p-b-0">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Signup</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($last_users as $user)
+              <tr>
+                <td>{{ $user->firstname }}</td>
+                <td><span class="c-primary">{{ $user->username }}</span></td>
+                <td><span class="c-primary">{{ $user->created_at->diffForHumans() }}</span></td>
+                <td>
+                  @if ($user->confirmed_mail)
+                  <div class="badge badge-success">Active</div>
+                  @else
+                  <div class="badge badge-warning">Activation awaiting</div>
+                  @endif
+                </td>
+              </tr>
+              @endforeach
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <!--/ panel right -->
+
+    <div class="panel widget-member2">
+      <div class="row">
+        <div class="col-lg-6 col-xs-9">
+          <div class="clearfix">
+            <h3 class="m-t-0 member-name"><strong>Most active user by assets</strong></h3>
+          </div>
+          <div class="row">
+            @foreach($top_users as $user)
+            <div class="col-sm-12">
+              <p><i class="fa fa-user-md c-gray-light p-r-10"></i> {{ $user->username }} [ {{ $user->project_gross }}% ]</p>
+            </div>
+            @endforeach
+          </div>
+        </div>
+        <div class="col-lg-6 col-xs-9">
+          <div class="clearfix">
+            <h3 class="m-t-0 member-name"><strong>Most active user by login</strong></h3>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <p><i class="fa fa-user-md c-gray-light p-r-10"></i> Sjaak</p>
+            </div>
+            <div class="col-sm-12">
+              <p><i class="fa fa-user-md c-gray-light p-r-10"></i> Sjaak</p>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+
+    <!-- spider right -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3><i class="icon-graph"></i> <strong>Module</strong> Usage Ratio</h3>
+        </div>
+        <div class="panel-body p-15 p-b-0">
+          <canvas id="radar-chart" class="full" height="75"></canvas>
+        </div>
+      </div>
+    <!--/ spider right -->
+
+  </div>
+  <!-- </div> -->
+
+    <!--<div class="col-md-4 col-sm-6 portlets">
+      <div class="panel widget-member clearfix">
+        <div class="col-xs-9">
+          <h3 class="m-t-0 member-name"><strong>John Snow</strong></h3>
+          <p class="member-job">Software Engineer</p>
+          <div class="row">
+            <div class="col-xlg-6">
+              <p><i class="icon-envelope c-gray-light p-r-10"></i> cameso@it.com</p>
+              <p><i class="fa fa-facebook c-gray-light p-r-10"></i> fb.com/jsnow</p>
+            </div>
+            <div class="col-xlg-6 align-right">
+              <p><i class="icon-calendar c-gray-light p-r-10"></i> 6 may 2014</p>
+              <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  <!-- <div class="row"> -->
+
+
 
   </div>
 

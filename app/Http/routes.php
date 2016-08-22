@@ -50,30 +50,32 @@ Route::group(['middleware' => 'auth'], function() {
 		]);
 	});
 
-	/*Route::get('/query', function () {
-		return view('query', [
-			'all_imports' => Stats::orderBy('created_at', 'desc')->get(),
-			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
-		]);
-	});*/
-
 	Route::get('/', function () {
 		return view('main', [
-			'top_users' => RemoteappUser::orderBy('id', 'desc')->limit(5)->get(),
+			'last_users' => RemoteappUser::orderBy('id', 'desc')->select('username', 'firstname', 'created_at', 'confirmed_mail')->limit(2)->get(),
+			'top_users' => DB::table('user_gross_totals')->select('username', 'project_gross')->where('project_count','>',0)->limit(2)->get(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
 			'avg_hour' => number_format(RemoteappProject::avg('hour_rate'), 2),
 			'avg_hour_more' => number_format(RemoteappProject::whereNotNull('hour_rate_more')->avg('hour_rate_more'), 2),
+			'avg_hour_administration' => number_format(RemoteappUser::avg('administration_cost'), 2),
 		]);
 	});
 
-	Route::get('/users', function () {
+	Route::get('/users/gross_share', function () {
+		return view('users_gross_share', [
+			'all_users' => DB::table('user_gross_totals')->where('project_count','>',0)->get(),
+			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
+		]);
+	});
+
+	Route::get('/users/list', function () {
 		return view('users', [
 			'all_users' => RemoteappUser::all(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
 		]);
 	});
 
-	Route::get('/projects', function () {
+	Route::get('/projects/list', function () {
 		return view('projects', [
 			'all_projects' => RemoteappProject::all(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
@@ -140,6 +142,10 @@ Route::group(['middleware' => 'auth'], function() {
 			];
 
 			return response()->json(['success' => true, 'data' => $data]);
+		});
+
+		Route::get('/usage_ratio', function() {
+			return response()->json([28,48,40,19,96,27,100]);
 		});
 
 	});
