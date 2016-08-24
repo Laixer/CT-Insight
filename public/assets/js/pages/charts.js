@@ -1,9 +1,9 @@
 $(function () {
 
       /**** Radar Charts: ChartJs ****/
-      function default_radar_data(data) {
+      function default_radar_data(resultset) {
         return {
-          labels: ["Projecten", "Offertes", "Facturen", "Inkoop", "Meerwerk", "Minderwerk", "Stelposten"],
+          labels: ["Projecten", "Offertes", "Facturen", "BTW verlegt", "Meerwerk", "Minderwerk", "Stelposten"],
           datasets: [
             {
               label: "Usage ratio",
@@ -13,14 +13,14 @@ $(function () {
               pointStrokeColor: "#fff",
               pointHighlightFill: "#fff",
               pointHighlightStroke: "#319DB5",
-              data: [28,48,40,19,96,27,100]
+              data: resultset
             }
           ]
         }
       };
 
-      $.getJSON('/rest/usage_ratio', function (data) {
-        window.myRadar = new Chart(document.getElementById("radar-chart").getContext("2d")).Radar(default_radar_data(data), {
+      $.getJSON('/rest/usage_ratio', function (resultset) {
+        window.myRadar = new Chart(document.getElementById("radar-chart").getContext("2d")).Radar(default_radar_data(resultset), {
           responsive: true,
           tooltipCornerRadius: 0
         });

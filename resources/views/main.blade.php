@@ -254,7 +254,7 @@
       <div class="row">
         <div class="col-lg-6 col-xs-9">
           <div class="clearfix">
-            <h3 class="m-t-0 member-name"><strong>Most active user by assets</strong></h3>
+            <h3 class="m-t-0 member-name"><strong>Most active users by assets</strong></h3>
           </div>
           <div class="row">
             @foreach($top_users as $user)
@@ -266,15 +266,14 @@
         </div>
         <div class="col-lg-6 col-xs-9">
           <div class="clearfix">
-            <h3 class="m-t-0 member-name"><strong>Most active user by login</strong></h3>
+            <h3 class="m-t-0 member-name"><strong>Most recent logins</strong></h3>
           </div>
           <div class="row">
+            @foreach($recent_users as $user)
             <div class="col-sm-12">
-              <p><i class="fa fa-user-md c-gray-light p-r-10"></i> Sjaak</p>
+              <p><i class="fa fa-user-md c-gray-light p-r-10"></i> {{ $user->username }}</p>
             </div>
-            <div class="col-sm-12">
-              <p><i class="fa fa-user-md c-gray-light p-r-10"></i> Sjaak</p>
-            </div>
+            @endforeach
           </div>
         </div>        
       </div>

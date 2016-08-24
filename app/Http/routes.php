@@ -52,8 +52,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::get('/', function () {
 		return view('main', [
-			'last_users' => RemoteappUser::orderBy('id', 'desc')->select('username', 'firstname', 'created_at', 'confirmed_mail')->limit(2)->get(),
-			'top_users' => DB::table('user_gross_totals')->select('username', 'project_gross')->where('project_count','>',0)->limit(2)->get(),
+			'last_users' => RemoteappUser::orderBy('created_at', 'desc')->select('username', 'firstname', 'created_at', 'confirmed_mail')->limit(2)->get(),
+			'top_users' => DB::table('user_gross_totals')->select('username', 'project_gross')->where('project_count','>',0)->orderBy('user_gross_totals','desc')->limit(2)->get(),
+			'recent_users' => RemoteappUser::orderBy('updated_at', 'desc')->select('username')->whereNotNull('confirmed_mail')->limit(2)->get(),
 			'last_update' => Stats::orderBy('created_at', 'desc')->first(),
 			'avg_hour' => number_format(RemoteappProject::avg('hour_rate'), 2),
 			'avg_hour_more' => number_format(RemoteappProject::whereNotNull('hour_rate_more')->avg('hour_rate_more'), 2),
@@ -145,7 +146,34 @@ Route::group(['middleware' => 'auth'], function() {
 		});
 
 		Route::get('/usage_ratio', function() {
-			return response()->json([28,48,40,19,96,27,100]);
+			$counter = Stats::orderBy('created_at', 'desc')->first();
+			$list_tax_reverse = \DB::table('remoteapp_projects')
+				->selectRaw('count(tax_reverse) as total')
+				->where('tax_reverse', true)
+				->lists('total');
+			$list_more = \DB::table('remoteapp_projects')
+				->selectRaw('count(use_more) as total')
+				->where('use_more', true)
+				->lists('total');
+			$list_less = \DB::table('remoteapp_projects')
+				->selectRaw('count(use_less) as total')
+				->where('use_less', true)
+				->lists('total');
+			$list_estimate = \DB::table('remoteapp_projects')
+				->selectRaw('count(use_estimate) as total')
+				->where('use_estimate', true)
+				->lists('total');
+
+			$data = [
+				$counter->project_count,
+				$counter->offer_count,
+				$counter->invoice_count,
+				$list_tax_reverse[0],
+				$list_more[0],
+				$list_less[0],
+				$list_estimate[0]
+			];
+			return response()->json($data);
 		});
 
 	});
